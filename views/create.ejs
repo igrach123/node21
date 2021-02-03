@@ -1,22 +1,9 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Node.js Crash Course</title>
-</head>
+  <%- include('./partials/head.ejs') %> 
 <body>
 
-  <nav>
-      <div class="site-title">
-          <a href="/"><h1>Blog Ninja</h1></a>
-          <p>Be a real Ninja</p>
-      </div>
-      <ul>
-          <li> <a href="/">Blogs</a></li> 
-            <li><a href="/about">About page</a></li>
-          <li><a href="/blogs/create">New Blog</a></li>
-      </ul> 
-  </nav>
+   
+  <%- include('./partials/nav.ejs') %> 
   
   <div class="create-blog content">
     <form action="">
@@ -29,7 +16,7 @@
     <button>Submit</button>
     </form>
 
-
+    <%- include('./partials/footer.ejs') %> 
   </div>
 
 </body>
