@@ -1,23 +1,27 @@
 <html lang="en">
-  <%- include('./partials/head.ejs') %> 
-<body>
+<%- include('./partials/head.ejs') %>
 
-   
-  <%- include('./partials/nav.ejs') %> 
-  
-  <div class="create-blog content">
-    <form action="">
-        <label for="title">Blog title:</label>
-        <input type="text" id="title" required>
-        <label for="snippet">Blog Snippet:</label>
-        <input type="text" id="snippet" required>
-        <label for="body">Blog Body:</label>
-        <textarea name="" id="body" cols="30" rows="10"></textarea>
-    <button>Submit</button>
-    </form>
+  <body>
 
-    <%- include('./partials/footer.ejs') %> 
-  </div>
 
-</body>
+    <%- include('./partials/nav.ejs') %>
+
+      <div class="create-blog content">
+        <form action="/blogs" method="POST">
+          <label for="title">Game title:</label>
+          <input type="text" id="title" required name="title">
+          <label for="snippet">Game Snippet:</label>
+          <input type="text" id="snippet" required name="snippet">
+          <label for="img">img:</label>
+          <input type="text" id="img" required name="img">
+          <label for="body">Game Body:</label>
+          <textarea name="body" id="body" cols="30" rows="10"></textarea>
+          <button>Submit</button>
+        </form>
+
+        <%- include('./partials/footer.ejs') %>
+      </div>
+
+  </body>
+
 </html>
