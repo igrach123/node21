@@ -16,10 +16,15 @@ const gameSchema = new Schema({
         type: String,
         required: false
     },
-    body: {
+    multiplayer: {
+        type: Boolean,
+        required:true
+    },
+    console: {
         type: String,
-        required: false
+        required : true
     }
+    
 }, { timestamps:true });
 
 const Game = mongoose.model('Game', gameSchema);

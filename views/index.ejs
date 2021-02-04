@@ -13,10 +13,17 @@
               <h3 class="title">
                 <%= blog.title %>
               </h3>
+              <img src="<%= blog.img %> " alt="<%= blog.title %>" width="75px">
               <p class="snippet">
                 <%= blog.snippet %>
               </p>
-              <img src="<%= blog.img %> " alt="<%= blog.title %>" width="75px">
+              <p>MP : <span>
+                  <%= blog.multiplayer %>
+                </span> </p>
+              <p>Console <span>
+                  <%= blog.console %>
+                </span> </p>
+
             </a>
             <% }) %>
               <% } else { %>
