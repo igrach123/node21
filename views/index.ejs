@@ -9,22 +9,25 @@
 
         <% if (blogs.length> 0) { %>
           <% blogs.forEach(blog=> { %>
-            <a class="single" href="/blogs/<%= blog._id %> ">
-              <h3 class="title">
-                <%= blog.title %>
-              </h3>
-              <img src="<%= blog.img %> " alt="<%= blog.title %>" width="75px">
+            <div class="single">
+              <a href="/blogs/<%= blog._id %> ">
+                <h3 class="title">
+                  <%= blog.title %>
+                </h3>
+                <img src="<%= blog.img %> " alt="<%= blog.title %>" width="75px">
+              </a>
               <p class="snippet">
                 <%= blog.snippet %>
               </p>
               <p>MP : <span>
                   <%= blog.multiplayer %>
                 </span> </p>
-              <p>Console <span>
+              <p><span>
                   <%= blog.console %>
                 </span> </p>
+              <a class="delete" data-doc="<%= blog._id %>">delete</a>
+            </div>
 
-            </a>
             <% }) %>
               <% } else { %>
                 <p>There are no blogs to display...</p>
