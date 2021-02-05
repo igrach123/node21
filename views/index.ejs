@@ -1,9 +1,10 @@
 <html lang="en">
-  <%- include('./partials/head.ejs') %> 
-<body>
+<%- include("./partials/head.ejs") %>
 
-  <%- include('./partials/nav.ejs') %> 
+  <body>
+    <%- include("./partials/nav.ejs") %>
 
+<<<<<<< HEAD
   <div class="blogs content">
       <h2>All Blogs</h2>
      
@@ -19,8 +20,40 @@
       
 
  
+=======
+      <div class="blogs content">
+        <h2>All Games</h2>
 
-  </div>
-  <%- include('./partials/footer.ejs') %> 
-</body>
+        <% if (blogs.length> 0) { %>
+          <% blogs.forEach(blog=> { %>
+            <div class="single">
+              <a href="/blogs/<%= blog._id %> ">
+                <h3 class="title">
+                  <%= blog.title %>
+                </h3>
+                <img src="<%= blog.img %> " alt="<%= blog.title %>" width="75px">
+              </a>
+              <p class="snippet">
+                <%= blog.snippet %>
+              </p>
+              <p>MP : <span>
+                  <%= blog.multiplayer %>
+                </span> </p>
+              <p><span>
+                  <%= blog.console %>
+                </span> </p>
+              <a class="delete" data-doc="<%= blog._id %>">delete</a>
+            </div>
+
+            <% }) %>
+              <% } else { %>
+                <p>There are no blogs to display...</p>
+                <% } %>
+
+      </div>
+
+      <%- include("./partials/footer.ejs") %>
+  </body>
+>>>>>>> 448d6ba08893f352a7eb7deedd9b44e1c8984b50
+
 </html>
