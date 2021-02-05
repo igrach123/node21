@@ -6,19 +6,19 @@
 
   <div class="blogs content">
       <h2>All Blogs</h2>
-      <% 
-        if (games.length > 0 )  { %>
-        <% games.forEach( game => { %>
-          <h3 class="title"> <%= game.title %> </h3>
-          <p class="snippet"><%= game.snippet %></p>
+     
+      
+      
+          <h3 class="title"> <%= games.title %> </h3>
+          <p class="snippet"><%= games.snippet %></p>
 
-       <%   }) %>
+      
+<% console.log(games.length) %> 
+      
 
-      <%  } else { %> 
+      
 
-        <p> There are no Blogs at this time</p>
-
-      <% } %>
+ 
 
   </div>
   <%- include('./partials/footer.ejs') %> 
