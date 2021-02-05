@@ -4,14 +4,14 @@ const Blog = require('../models/blog');
 const router = express.Router();
 // blog routes
 router.get('/blogs/create', (req, res) => {
-    res.render('create', { title: 'Create a new blog' });
+    res.render('blogs/create', { title: 'Create a new blog' });
   });
   
   // all blogs home page
   router.get('/blogs', (req, res) => {
     Blog.find().sort({ createdAt: -1 })
       .then(result => {
-        res.render('index', { blogs: result, title: 'All blogs' });
+        res.render('blogs/index', { blogs: result, title: 'All blogs' });
       })
       .catch(err => {
         console.log(err);
@@ -34,7 +34,7 @@ router.get('/blogs/create', (req, res) => {
      const id = req.params.id; 
      Blog.findById(id)
       .then((result) => {
-          res.render('details' , {blog: result, title:'Game Details'})
+          res.render('blogs/details' , {blog: result, title:'Game Details'})
       })
       .catch((err) => {
           console.log(err);

@@ -1,0 +1,38 @@
+<html lang="en">
+<%- include('../partials/head.ejs') %>
+
+  <body>
+
+
+    <%- include('../partials/nav.ejs') %>
+
+      <div class="create-blog content">
+        <form action="/players" method="POST">
+
+          <label for="name">Player Name:</label>
+          <input type="text" id="name" required name="name">
+          <label for="gamertag">#Gamertag:</label>
+          <input type="text" id="gamertag" required name="gamertag">
+
+          <label for="age">Age</label>
+          <input type="number" id="age" required name="age">
+
+          <label for="flag">flag:</label>
+          <input type="text" id="flag" required name="flag">
+
+          <label for="checkout">Checkout</label>
+
+        <input type="date" id="checkout" name="checkout"
+              >
+
+            
+
+          <button>Submit New Player</button>
+        </form>
+
+        <%- include('../partials/footer.ejs') %>
+      </div>
+
+  </body>
+
+</html>

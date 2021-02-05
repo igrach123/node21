@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 // const { response } = require('express');
 const blogRoutes = require('./routes/blogRoutes');
+const playerRoutes = require('./routes/playerRoutes');
 
 // express app
 const app = express();
@@ -38,6 +39,7 @@ app.get('/about', (req, res) => {
 });
 // importin routes from routes/blogRoutes
 app.use(blogRoutes);
+app.use(playerRoutes);
 
 // 404 page
 app.use((req, res) => {

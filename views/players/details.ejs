@@ -1,0 +1,24 @@
+<html lang="en">
+<%- include("../partials/head.ejs") %>
+
+    <body>
+        <%- include("../partials/nav.ejs") %>
+
+            <div class="details content">
+                <h2>
+                    <%= player.name %>
+                </h2>
+                <div class="content">
+                    <p>
+                        <%= player.flag %>
+                    </p>
+                </div>
+                <a class="delete" data-doc="<%= player._id %>">delete</a>
+            </div>
+
+            <%- include("../partials/footer.ejs") %>
+
+
+    </body>
+
+</html>
