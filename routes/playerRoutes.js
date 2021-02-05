@@ -1,4 +1,5 @@
 const express = require('express');
+const moment = require('moment');
 const Player = require('../models/player');
 
 const router = express.Router();
@@ -9,6 +10,9 @@ router.get('/players/create', (req, res) => {
   
   // all blogs home page
   router.get('/players', (req, res) => {
+    //send moment js to index ejs
+    res.locals.moment = moment;
+   
     Player.find().sort({ createdAt: -1 })
       .then(result => {
         res.render('players/index', { players: result, title: 'All players' });

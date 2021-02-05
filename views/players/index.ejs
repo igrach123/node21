@@ -4,39 +4,37 @@
   <body>
     <%- include("../partials/nav.ejs") %>
 
-      <div class="players content">
+      <div class="players content container">
         <h2>All Players</h2>
-
-        <% if (players.length> 0) { %>
-          <% players.forEach(player=> { %>
-            <div class="single">
-              <a href="/players/<%= player._id %> ">
-                <h3 class="title">
-                  <%= player.name %>
-                </h3>
-                <img src="<%= player.flag %> " alt="<%= player.name %>" width="75px">
-              </a>
-              <p><span>
-                <%= player.age %>
-              </span> </p>
-              <p><span>
-                Chekout 
-                <%= player.checkout %>
-                console.log()
-              </span> </p>
+        <div class="row">
             
-           
-              <a class="delete" data-doc="<%= player._id %>">delete</a>
-            </div>
-
-            <% }) %>
-              <% } else { %>
-                <p>There are no players to display...</p>
-                <% } %>
-
+          
+              <div class="col-sm player-card">
+                <% if (players.length> 0) { %>
+                  <% players.forEach(player=> { %>
+              
+                    <div class="card">
+                      <img src=" <%= player.flag %> " class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title"><%= player.name  %> </h5>
+                        <p class="card-text"> <%= moment(player.checkout).format( 'DD-MMM-YYYY') %></p>
+                        <a href="/players/<%= player._id %> " class="btn btn-primary">More</a>
+                        <a class="delete btn btn-warning" data-doc="<%= player._id %>">delete</a>
+                      </div>
+                    </div>
+                  
+                    <% }) %>
+                      <% } else { %>
+                        <p>There are no players to display...</p>
+                        <% } %>
+              </div>
+       
+              </div>
       </div>
 
       <%- include("../partials/footer.ejs") %>
+     
+      
   </body>
 
 </html>
