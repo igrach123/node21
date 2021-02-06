@@ -5,34 +5,55 @@
     <%- include("../partials/nav.ejs") %>
 
       <div class="players content container">
-        <h2>All Players</h2>
+        <h2>All Players   <form class="form-inline my-2 my-lg-0" action="/players" method="GET">
+          <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
+        </form></h2>
         <div class="row">
             
           
-              <div class="col-sm player-card">
+             
                 <% if (players.length> 0) { %>
                   <% players.forEach(player=> { %>
-              
+                    <div class="col-sm-2 d-flex align-items-stretch text-center">
                     <div class="card">
-                      <img src=" <%= player.flag %> " class="card-img-top" alt="...">
+                      <p class="small"> <%= player.name  %> </p>
+                      <div class="text-center">
+                        <img src=" <%= player.flag %> " class="card-img-top" alt="...">
+                      </div>
+                      
                       <div class="card-body">
-                        <h5 class="card-title"><%= player.name  %> </h5>
+                        <h5 class="card-title"><%= player.gamertag%> </h5>
                         <p class="card-text"> <%= moment(player.checkout).format( 'DD-MMM-YYYY') %></p>
-                        <a href="/players/<%= player._id %> " class="btn btn-primary">More</a>
-                        <a class="delete btn btn-warning" data-doc="<%= player._id %>">delete</a>
+                        <a href="/players/<%= player._id %> " class="btn btn-primary"><i class="fa fa-user-secret" aria-hidden="true"></i></a>
+                        <a class="deleteplayer btn btn-warning" data-doc="<%= player._id %>"> <i class="fa fa-trash"></i> </a>
                       </div>
                     </div>
-                  
+                  </div>
                     <% }) %>
                       <% } else { %>
                         <p>There are no players to display...</p>
                         <% } %>
-              </div>
+              
        
               </div>
+             
       </div>
 
       <%- include("../partials/footer.ejs") %>
+      <script>
+        const delplayer = document.querySelector('a.deleteplayer');
+        delplayer.addEventListener('click', (e) => {
+            const endpoint = `/players/${delplayer.dataset.doc}`;
+            fetch(endpoint , {
+                method: 'DELETE'
+            })
+            .then((response) => response.json())
+            .then(data => window.location.href = data.redirect)
+            .catch((err) => console.log(err));
+        })
+
+    </script>
      
       
   </body>

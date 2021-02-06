@@ -13,12 +13,24 @@
                         <%= player.flag %>
                     </p>
                 </div>
-                <a class="delete" data-doc="<%= player._id %>">delete</a>
+                <a class="deleteplayer btn btn-warning" data-doc="<%= player._id %>">x</a>
             </div>
 
             <%- include("../partials/footer.ejs") %>
 
+        <script>
+            const delplayer = document.querySelector('a.deleteplayer');
+            delplayer.addEventListener('click', (e) => {
+                const endpoint = `/players/${delplayer.dataset.doc}`;
+                fetch(endpoint , {
+                    method: 'DELETE'
+                })
+                .then((response) => response.json())
+                .then(data => window.location.href = data.redirect)
+                .catch((err) => console.log(err));
+            })
 
+        </script>
     </body>
 
 </html>

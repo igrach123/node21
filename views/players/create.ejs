@@ -6,30 +6,48 @@
 
     <%- include('../partials/nav.ejs') %>
 
-      <div class="create-blog content">
-        <form action="/players" method="POST">
-
-          <label for="name">Player Name:</label>
-          <input type="text" id="name" required name="name">
-          <label for="gamertag">#Gamertag:</label>
-          <input type="text" id="gamertag" required name="gamertag">
-
-          <label for="age">Age</label>
-          <input type="number" id="age" required name="age">
-
-          <label for="flag">flag:</label>
-          <input type="text" id="flag" required name="flag">
-
-          <label for="checkout">Checkout</label>
-
-        <input type="date" id="checkout" name="checkout"
-              >
-
+      <div class="container">
+        <div class="row">
+          <div class="col align-self-start">
             
+          </div>
+          <div class="col align-self-center">
+            <h2 class="text-center">Add a New Player</h2>
+            <br>
 
-          <button>Submit New Player</button>
-        </form>
+            <form action="/players" method="POST">
+              <div class="form-group" >
+                <label for="name">Player Name</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="name" name="name" required>          
+              </div>
+              <div class="form-group" >
+                <label for="gamertag">#Gamertag</label>
+                <input type="text" class="form-control" id="gamertag" aria-describedby="gamertag" placeholder="gamertag" name="gamertag" required>          
+              </div>
+              <div class="form-group" >
+                <label for="age">Age</label>
+                <input type="number" class="form-control" id="age" aria-describedby="age" placeholder="age" name="age" required>          
+              </div>
+              <div class="form-group" >
+                <label for="flag">flag</label>
+                <input type="text" class="form-control" id="flag" aria-describedby="flag" placeholder="flag" name="flag" required>          
+              </div>
+              <div class="form-group" >
+                <label for="checkout">checkout</label>
+                <input type="date" class="form-control" id="checkout" aria-describedby="checkout" placeholder="checkout" name="checkout" required>          
+              </div>
+    
+             
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+    
+          </div>
+          <div class="col align-self-end">
+           
+          </div>
 
+        </div>
+       
         <%- include('../partials/footer.ejs') %>
       </div>
 

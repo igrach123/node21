@@ -8,6 +8,10 @@ const playerSchema = new Schema({
         type : String,
         required: true
     },
+    gamertag: {
+        type : String,
+        required: true
+    },
     age: {
         type: Number,
         required:true

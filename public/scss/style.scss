@@ -1,19 +1,22 @@
 //botstrap import from node
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+//font import
+@import url("https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap");
-body {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 0 20px;
-  font-family: "Noto Serif", serif;
-  max-width: 1200px;
-}
-.player-card {
-  float: left;
-  display: inline-block;
-}
-/* index styles */
+.card {
+  .small {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    text-align: center;
+  }
 
-/* details styles */
+  .card-img-top {
+    padding: 5px;
+    width: 70px;
+  }
+  .card-title {
+    font-family: "Slabo 27px", serif;
+    text-transform: uppercase;
+  }
+}
