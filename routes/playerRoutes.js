@@ -10,16 +10,28 @@ router.get('/players/create', (req, res) => {
   
   // all blogs home page
   router.get('/players', (req, res) => {
-    //send moment js to index ejs
     res.locals.moment = moment;
-   
-    Player.find().sort({ createdAt: -1 })
+    if(req.query.search){
+      const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+      Player.find({name:regex}).sort({ createdAt: -1 })
       .then(result => {
         res.render('players/index', { players: result, title: 'All players' });
       })
       .catch(err => {
         console.log(err);
-      });
+      }); 
+    } else{
+      Player.find().sort({ createdAt: -1 })
+      .then(result => {
+        res.render('players/index', { players: result, title: 'All players' });
+      })
+      .catch(err => {
+        console.log(err);
+      }); 
+    }
+    //send moment js to index ejs
+   
+ 
   });
   
   //create a new blog with post and redirecit it to players
@@ -59,4 +71,9 @@ router.get('/players/create', (req, res) => {
       });
   });
 
+
+  //fuzzy search function
+  function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
   module.exports = router;
