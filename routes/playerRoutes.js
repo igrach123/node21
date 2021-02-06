@@ -44,8 +44,7 @@ router.get('/players/create', (req, res) => {
           console.log(err);
       });
   
-     console.log(id);
-  })
+  });
   
   //delete a single blog on create page
   router.delete('/players/:id', (req, res) => {
