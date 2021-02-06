@@ -4,33 +4,34 @@
     <body>
         <%- include("../partials/nav.ejs") %>
 
-            <div class="details content">
+            <div class="container">
                 <h2>
                     <%= player.name %>
                 </h2>
-                <div class="content">
-                    <p>
-                        <%= player.flag %>
-                    </p>
-                </div>
-                <a class="deleteplayer btn btn-warning" data-doc="<%= player._id %>">x</a>
+
+                <p> <img src="../<%= player.flag %>" class="" alt="..." width="80px"></p>
+
+                <a class="deleteplayer btn btn-warning" data-doc="<%= player._id %>"> <i class="fa fa-trash"></i> </a>
+                <p>
+                    <%= player.gamertag%>
+                </p>
             </div>
 
             <%- include("../partials/footer.ejs") %>
 
-        <script>
-            const delplayer = document.querySelector('a.deleteplayer');
-            delplayer.addEventListener('click', (e) => {
-                const endpoint = `/players/${delplayer.dataset.doc}`;
-                fetch(endpoint , {
-                    method: 'DELETE'
-                })
-                .then((response) => response.json())
-                .then(data => window.location.href = data.redirect)
-                .catch((err) => console.log(err));
-            })
+                <script>
+                    const delplayer = document.querySelector('a.deleteplayer');
+                    delplayer.addEventListener('click', (e) => {
+                        const endpoint = `/players/${delplayer.dataset.doc}`;
+                        fetch(endpoint, {
+                            method: 'DELETE'
+                        })
+                            .then((response) => response.json())
+                            .then(data => window.location.href = data.redirect)
+                            .catch((err) => console.log(err));
+                    })
 
-        </script>
+                </script>
     </body>
 
 </html>
