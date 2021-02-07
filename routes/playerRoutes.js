@@ -77,8 +77,12 @@ router.get('/players/create', (req, res) => {
  //single blog game
  router.put('/players/:id' , (req,res) => {
   //send moment js to details ejs
-  console.log(res.body)
- const id = req.params.id; 
+  const id = req.params.id; 
+  const doc =  MyModel.findOne(id);
+  /* doc.body = res.body; */
+
+  console.log(doc.body , res.body); 
+
 
 /*  Player.findById(id)
   .then((result) => {
