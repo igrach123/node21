@@ -1,0 +1,63 @@
+<html lang="en">
+<%- include('../partials/head.ejs') %>
+
+    <body>
+
+
+        <%- include('../partials/nav.ejs') %>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col align-self-center">
+                        <h2 class="text-center">New Player</h2>
+                        <br>
+
+                        <form action="/players" method="PUT">
+                            <div class="form-group">
+                                <label for="name">Player Name</label>
+                                <input type="text" class="form-control" id="name" aria-describedby="emailHelp"
+                                    value=" <%= player.name  %>  " name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gamertag">#Gamertag</label>
+                                <input type="text" class="form-control" id="gamertag" aria-describedby="gamertag"
+                                    value="<%= player.gamertag  %>" name="gamertag" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" class="form-control" id="age" aria-describedby="age"
+                                    value="<%= player.age  %>" name="age" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="flag">flag</label>
+                                <input type="text" class="form-control" id="flag" aria-describedby="flag"
+                                    value="<%= player.flag  %>" name="flag" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout">checkout</label>
+                                <input type="date" class="form-control" id="checkout" aria-describedby="checkout"
+                                    value="<%= player.checkout  %>" name="checkout" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout">id</label>
+                                <input type="text" class="form-control" id="_id" aria-describedby="_id"
+                                    value="<%= player._id  %>" name="_id" required>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+
+                    </div>
+                    <div class="col align-self-end">
+
+                    </div>
+
+                </div>
+
+                <%- include('../partials/footer.ejs') %>
+            </div>
+
+    </body>
+
+</html>

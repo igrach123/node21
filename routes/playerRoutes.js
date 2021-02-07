@@ -74,6 +74,21 @@ router.get('/players/create', (req, res) => {
     });
 
 });
+ //single blog game
+ router.put('/players/:id' , (req,res) => {
+  //send moment js to details ejs
+  console.log(res.body)
+ const id = req.params.id; 
+
+/*  Player.findById(id)
+  .then((result) => {
+     
+  })
+  .catch((err) => {
+      console.log(err);
+  }); */
+
+});
 
 
   

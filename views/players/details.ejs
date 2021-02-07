@@ -15,6 +15,10 @@
                 <p>
                     <%= player.gamertag%>
                 </p>
+                <p>
+                    <%= moment(player.checkout).format( 'DD-MMM-YYYY' ) %>
+                </p>
+                <a href="/updateplayer/<%= player._id %>"><button class="btn btn-success">Update player</button></a>
             </div>
 
             <%- include("../partials/footer.ejs") %>
