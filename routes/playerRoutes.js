@@ -10,6 +10,7 @@ router.get('/players/create', (req, res) => {
   
   // all blogs home page
   router.get('/players', (req, res) => {
+    //send moment js to index ejs
     res.locals.moment = moment;
     if(req.query.search){
       const regex = new RegExp(escapeRegex(req.query.search), 'gi');
@@ -29,7 +30,7 @@ router.get('/players/create', (req, res) => {
         console.log(err);
       }); 
     }
-    //send moment js to index ejs
+    
    
  
   });
@@ -47,16 +48,34 @@ router.get('/players/create', (req, res) => {
   })
   //single blog game
   router.get('/players/:id' , (req,res) => {
+      //send moment js to details ejs
+      res.locals.moment = moment;
      const id = req.params.id; 
      Player.findById(id)
       .then((result) => {
-          res.render('players/details' , {player: result, title:'Game Details'})
+          res.render('players/details' , {player: result, title:'Player Details'})
       })
       .catch((err) => {
           console.log(err);
       });
   
   });
+  
+  //update single player form site
+  router.get('/updateplayer/:id' , (req,res) => {
+
+   const id = req.params.id; 
+   Player.findById(id)
+    .then((result) => {
+        res.render('players/update' , {player: result, title:'Player Details'})
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+
+});
+
+
   
   //delete a single blog on create page
   router.delete('/players/:id', (req, res) => {
