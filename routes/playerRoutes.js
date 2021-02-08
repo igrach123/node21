@@ -77,12 +77,12 @@ const router = express.Router();
 
  //update player with the update post form and redirect to the players site
  router.post('/updateplayer/:id' , (req,res) => {
-  //send moment js to details ejs 
+
   const id = req.params.id; 
   const oldPlayer = req.params.body;
  
 
-  Player.findByIdAndUpdate(req.params.id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout}, {new: true}, function(err, result){
+  Player.findByIdAndUpdate(req.params.id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout, "isactive":req.body.isactive}, {new: true}, function(err, result){
     console.log(req.body.name);
     if(err) {
         console.log(err);
