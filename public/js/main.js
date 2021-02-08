@@ -1,32 +1,19 @@
+//red date background logic
+
 const chekoutdate = document.querySelectorAll('p.checkout-date');
-
 today = new Date();
-console.log(chekoutdate);
-
-
 const todayM = moment(today).format( 'DD-MMM-YYYY' );
-
+console.log(chekoutdate.length);
 chekoutdate.forEach(chekoutdate => {
   console.log(chekoutdate.innerText);
+  const MomentCD = moment(chekoutdate.innerText).format( 'DD-MMM-YYYY' );
   console.log(todayM);
+  console.log(MomentCD);
  
-  if (chekoutdate.innerText < todayM) {
-    chekoutdate.classList.add('bg-danger')
+  if (moment(todayM).isAfter(MomentCD) ) {
+    chekoutdate.classList.add('text-danger')
+  }else{
+    chekoutdate.classList.add('text-success')
   }
-
 });
 
-
-
-
-/* var today, someday, text;
-today = new Date();
-someday = new Date(chekoutdate);
-someday.setFullYear(chekoutdate);
-
-if (someday > today) {
-  console.log("Today is before January 14, 2100.") 
-} else {
-  console.log("Today is after January 14, 2100.")
-};
- */

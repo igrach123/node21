@@ -24,20 +24,20 @@
 
         <!-- Modal -->
         <%- include("../partials/newplayermodal.ejs") %>
-      
+
 
 
           <div class="row">
             <% if (players.length> 0) { %>
               <% players.forEach(player=> { %>
                 <div class="col-md-2 d-flex align-items-stretch text-center">
-                  <div class="card">
+                  <div class="card card-1">
                     <p class="small">
-                      <%= player.name %>
+                      <img src="<%= player.flag %>" class="card-img-top" alt="<%= player.flag %> ">
+                      <%= player.name %> <span class="badge badge-light">
+                          <%= player.age %>
+                        </span>
                     </p>
-                    <div class="text-center">
-                      <img src="<%= player.flag %>" class="card-img-top" alt="...">
-                    </div>
 
                     <div class="card-body">
                       <h5 class="card-title">
@@ -50,7 +50,8 @@
                           aria-hidden="true"></i></a>
                       <a class="deleteplayer btn btn-warning" data-doc="<%= player._id %>"> <i class="fa fa-trash"></i>
                       </a>
-                      <a href="/updateplayer/<%= player._id %>"><button class="btn btn-success"><i class="fa fa-cloud-upload" aria-hidden="true"></i></button></a>
+                      <a href="/updateplayer/<%= player._id %>"><button class="btn btn-success"><i
+                            class="fa fa-cloud-upload" aria-hidden="true"></i></button></a>
                     </div>
                   </div>
                 </div>

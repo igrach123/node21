@@ -5,20 +5,22 @@
         <%- include("../partials/nav.ejs") %>
 
             <div class="container">
-                <h2>
+                <h5>
+                    <img src="../<%= player.flag %>" class="" alt="..." width="35px">
                     <%= player.name %>
-                </h2>
-
-                <p> <img src="../<%= player.flag %>" class="" alt="..." width="80px"></p>
-
-                <a class="deleteplayer btn btn-warning" data-doc="<%= player._id %>"> <i class="fa fa-trash"></i> </a>
-                <p>
+                </h5>
+                <h2>
                     <%= player.gamertag%>
+                </h2>
+                <p class="age">
+                    <%= player.age %> years
                 </p>
-                <p>
+                <p class="checkout-date">
                     <%= moment(player.checkout).format( 'DD-MMM-YYYY' ) %>
                 </p>
-                <a href="/updateplayer/<%= player._id %>"><button class="btn btn-success">Update player</button></a>
+                <a class="deleteplayer btn btn-warning" data-doc="<%= player._id %>"> <i class="fa fa-trash"></i> </a>
+                <a href="/updateplayer/<%= player._id %>"><button class="btn btn-success"><i class="fa fa-cloud-upload"
+                            aria-hidden="true"></i></button></a>
             </div>
 
             <%- include("../partials/footer.ejs") %>
