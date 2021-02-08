@@ -20,10 +20,15 @@ const playerSchema = new Schema({
         type: String,
         required: false
     },
+    isactive: {
+        type: Boolean,
+        required: true
+    },
     checkout: {
         type : Date,
         required: false
     }
+   
   
     
 }, { timestamps:true });

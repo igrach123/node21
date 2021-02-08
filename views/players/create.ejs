@@ -30,15 +30,22 @@
               </div>
               <div class="form-group">
                 <label for="flag">Country:</label>
-                  <select name="flag" id="flag" class="form-control">
-                    <%- include('../partials/flags.ejs') %>
-                  </select>
+                <select name="flag" id="flag" class="form-control">
+                  <%- include('../partials/flags.ejs') %>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="isactive">Active</label>
+                <select name="isactive" id="isactive" class="form-control">
+                  <option value="true">yes</option>
+                  <option value="false">no</option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="checkout">checkout</label>
                 <input type="date" class="form-control" id="checkout" aria-describedby="checkout" placeholder="checkout"
                   name="checkout" required>
-                 
+
               </div>
 
 
