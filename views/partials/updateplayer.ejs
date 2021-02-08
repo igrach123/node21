@@ -1,22 +1,28 @@
-<html lang="en">
-<%- include('../partials/head.ejs') %>
+<div class="modal fade" id="updateplayer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add new Player</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
 
-    <body>
-
-
-        <%- include('../partials/nav.ejs') %>
-
-            <div class="container">
                 <div class="row">
+                    <div class="col align-self-end">
+
+                    </div>
                     <div class="col align-self-center">
                         <h2 class="text-center">Update Player</h2>
                         <br>
 
-                        <form action="/updateplayer/<%= player._id%>?_method=POST " method="POST">
+                        <form action="/players" method="PUT">
                             <div class="form-group">
                                 <label for="name">Player Name</label>
                                 <input type="text" class="form-control" id="name" aria-describedby="emailHelp"
-                                    value=" <%= player.name %>  " name="name" required>
+                                    value=" <%= player.name  %>  " name="name" required>
                             </div>
                             <div class="form-group">
                                 <label for="gamertag">#Gamertag</label>
@@ -34,11 +40,9 @@
                                     value="<%= player.flag  %>" name="flag" required>
                             </div>
                             <div class="form-group">
-                                <label for="checkout">checkout  <span class="checkout-label"> <%= moment(player.checkout).format( 'DD-MMM-YYYY' ) %></span></label>
-
+                                <label for="checkout">checkout</label>
                                 <input type="date" class="form-control" id="checkout" aria-describedby="checkout"
-                                    value="" name="checkout" required>
-                              
+                                    value="<%= player.checkout  %>" name="checkout" required>
                             </div>
                             <div class="form-group">
                                 <label for="checkout">id</label>
@@ -57,17 +61,11 @@
 
                 </div>
 
-                <%- include('../partials/footer.ejs') %>
             </div>
-            <script>
-                const checkout = document.querySelector("span.checkout-label");
-                const checkoutinput = document.getElementById("checkout");
-                window.addEventListener('load', (event) => {
-                    checkoutinput.value = checkout.innerHTML;
-                    console.log( checkout.innerHTML + checkoutinput);
-});
-            </script>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-    </body>
-
-</html>
+            </div>
+        </div>
+    </div>
+</div>

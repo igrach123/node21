@@ -1,13 +1,14 @@
+//import npm modules
 const express = require('express');
 const morgan = require('morgan');
 const moment = require('moment');
 const mongoose = require('mongoose');
 
-// const { response } = require('express');
+//import routes
 const blogRoutes = require('./routes/blogRoutes');
 const playerRoutes = require('./routes/playerRoutes');
 
-// express app
+//fire the express app
 const app = express();
 
 // connect to mongodb & listen for requests
@@ -22,8 +23,9 @@ app.set('view engine', 'ejs');
 
 // middleware & static files
 app.use(express.static('public'));
-app.use(express.urlencoded({extended:true})); //passes the post data ta an url object with is withing the req
-app.use(morgan('dev'));
+app.use(express.urlencoded({extended:true})); //passes the post data to an url object with is withing the req
+
+/* app.use(morgan('dev')); put out data */ 
 app.use((req, res, next) => {
   res.locals.path = req.path;
   next();

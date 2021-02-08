@@ -24,6 +24,7 @@
 
         <!-- Modal -->
         <%- include("../partials/newplayermodal.ejs") %>
+      
 
 
           <div class="row">
@@ -42,13 +43,14 @@
                       <h5 class="card-title">
                         <%= player.gamertag%>
                       </h5>
-                      <p class="card-text">
+                      <p class="card-text checkout-date">
                         <%= moment(player.checkout).format( 'DD-MMM-YYYY' ) %>
                       </p>
                       <a href="/players/<%= player._id %> " class="btn btn-primary"><i class="fa fa-user-secret"
                           aria-hidden="true"></i></a>
                       <a class="deleteplayer btn btn-warning" data-doc="<%= player._id %>"> <i class="fa fa-trash"></i>
                       </a>
+                      <a href="/updateplayer/<%= player._id %>"><button class="btn btn-success"><i class="fa fa-cloud-upload" aria-hidden="true"></i></button></a>
                     </div>
                   </div>
                 </div>

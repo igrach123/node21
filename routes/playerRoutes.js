@@ -3,12 +3,15 @@ const moment = require('moment');
 const Player = require('../models/player');
 
 const router = express.Router();
-// blog routes
-router.get('/players/create', (req, res) => {
+
+// player routes////////////////////////
+
+  //render the create page
+  router.get('/players/create', (req, res) => {
     res.render('players/create', { title: 'Create a player' });
   });
   
-  // all blogs home page
+  // all players render
   router.get('/players', (req, res) => {
     //send moment js to index ejs
     res.locals.moment = moment;
@@ -30,12 +33,9 @@ router.get('/players/create', (req, res) => {
         console.log(err);
       }); 
     }
-    
-   
- 
   });
   
-  //create a new blog with post and redirecit it to players
+  //create a new player with the form and redirect it to players
   router.post('/players', (req, res) => {
       const player = new Player(req.body);
       player.save()
@@ -46,7 +46,7 @@ router.get('/players/create', (req, res) => {
           console.log(err);
       });
   })
-  //single blog game
+  //show single player details
   router.get('/players/:id' , (req,res) => {
       //send moment js to details ejs
       res.locals.moment = moment;
@@ -61,42 +61,41 @@ router.get('/players/create', (req, res) => {
   
   });
   
-  //update single player form site
+  //render the single player update site site
   router.get('/updateplayer/:id' , (req,res) => {
-
+  res.locals.moment = moment;
    const id = req.params.id; 
    Player.findById(id)
     .then((result) => {
-        res.render('players/update' , {player: result, title:'Player Details'})
+        res.render('players/update' , {player: result, title:'Update Player'})
+        
     })
     .catch((err) => {
         console.log(err);
     });
-
 });
- //single blog game
- router.put('/players/:id' , (req,res) => {
-  //send moment js to details ejs
+
+ //update player with the update post form and redirect to the players site
+ router.post('/updateplayer/:id' , (req,res) => {
+  //send moment js to details ejs 
   const id = req.params.id; 
-  const doc =  MyModel.findOne(id);
-  /* doc.body = res.body; */
+  const oldPlayer = req.params.body;
+ 
 
-  console.log(doc.body , res.body); 
-
-
-/*  Player.findById(id)
-  .then((result) => {
-     
-  })
-  .catch((err) => {
-      console.log(err);
-  }); */
-
+  Player.findByIdAndUpdate(req.params.id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout}, {new: true}, function(err, result){
+    console.log(req.body.name);
+    if(err) {
+        console.log(err);
+        res.redirect("/404");
+    } else {
+        console.log(result);
+        res.redirect('/players')
+    }
+  });
 });
 
-
-  
-  //delete a single blog on create page
+ 
+  //delete a single blog on details or on click page
   router.delete('/players/:id', (req, res) => {
     const id = req.params.id;
     
