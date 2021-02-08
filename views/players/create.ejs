@@ -29,22 +29,9 @@
                   required>
               </div>
               <div class="form-group">
-                <label for="flag">flag</label>
-               <!--  <input type="text" class="form-control" id="flag" aria-describedby="flag" placeholder="flag" name="flag"
-                  required> -->
+                <label for="flag">Country:</label>
                   <select name="flag" id="flag" class="form-control">
-                    <option value="/img/croatia.png">Croatia</option>
-                    <option value="/img/albania.png">Albania</option>
-                    <option value="/img/germany.png">Germany</option>
-                    <option value="/img/austria.png">Austria</option>
-                    <option value="/img/bosnia-and-herzegovina.png">Bosna</option>
-                    <option value="/img/england.png">England</option>
-                    <option value="/img/serbia.png">serbia</option>
-                    <option value="/img/slovenia.png">Slovenia</option>
-                    <option value="/img/saudi-arabia.png">Saudi-arabia</option>
-                    <option value="/img/austria.png">Austria</option>
-                    <option value="/img/czech-republic.png">Czech-republic</option>
-                    <option value="/img/denmark.png">Denmark</option>
+                    <%- include('../partials/flags.ejs') %>
                   </select>
               </div>
               <div class="form-group">

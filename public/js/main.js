@@ -1,12 +1,28 @@
-/* const chekoutdate = document.querySelector('p.checkout-date');
+const chekoutdate = document.querySelectorAll('p.checkout-date');
 
-
-console.log('wokring main js file');
-
-var today, someday, text;
 today = new Date();
-someday = new Date();
-someday.setFullYear(2100, 0, 14);
+console.log(chekoutdate);
+
+
+const todayM = moment(today).format( 'DD-MMM-YYYY' );
+
+chekoutdate.forEach(chekoutdate => {
+  console.log(chekoutdate.innerText);
+  console.log(todayM);
+ 
+  if (chekoutdate.innerText < todayM) {
+    chekoutdate.classList.add('bg-danger')
+  }
+
+});
+
+
+
+
+/* var today, someday, text;
+today = new Date();
+someday = new Date(chekoutdate);
+someday.setFullYear(chekoutdate);
 
 if (someday > today) {
   console.log("Today is before January 14, 2100.") 

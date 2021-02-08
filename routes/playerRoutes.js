@@ -17,7 +17,7 @@ const router = express.Router();
     res.locals.moment = moment;
     if(req.query.search){
       const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-      Player.find({name:regex}).sort({ createdAt: -1 })
+      Player.find({gamertag:regex}).sort({ createdAt: -1 })
       .then(result => {
         res.render('players/index', { players: result, title: 'All players' });
       })

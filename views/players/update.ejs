@@ -28,11 +28,18 @@
                                 <input type="number" class="form-control" id="age" aria-describedby="age"
                                     value="<%= player.age  %>" name="age" required>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="flag">flag</label>
                                 <input type="text" class="form-control" id="flag" aria-describedby="flag"
                                     value="<%= player.flag  %>" name="flag" required>
-                            </div>
+                            </div> -->
+                            <div class="form-group">                                                            
+                                <label for="flag">Country:</label>
+                                  <select name="flag" id="flag" class="form-control">
+                                    <option value="<%= player.flag %>"><%= player.flag  %></option> 
+                                    <%- include('../partials/flags.ejs') %>
+                                  </select>
+                              </div>
                             <div class="form-group">
                                 <label for="checkout">checkout  <span class="checkout-label"> <%= moment(player.checkout).format( 'DD-MMM-YYYY' ) %></span></label>
 
