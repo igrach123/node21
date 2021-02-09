@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// new schema
+
+
+// player Schema
 
 const playerSchema = new Schema({
     name: {
@@ -27,11 +29,27 @@ const playerSchema = new Schema({
     checkout: {
         type : Date,
         required: false
+    },
+    fortnitescore:{
+        type: Number,
+        require: false
+    },
+    fifascore: {
+        type: Number,
+        required: false
+    },
+   
+    ctrscore: {
+        type: Number,
+        required: false
     }
    
   
     
 }, { timestamps:true });
 
+
 const Player = mongoose.model('Player', playerSchema);
+
 module.exports = Player;
+

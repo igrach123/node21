@@ -2,6 +2,7 @@ const express = require('express');
 const moment = require('moment');
 const Player = require('../models/player');
 
+
 const router = express.Router();
 
 // player routes////////////////////////
@@ -11,6 +12,7 @@ const router = express.Router();
     res.render('players/create', { title: 'Create a player' });
   });
   
+
   // all players render
   router.get('/players', (req, res) => {
     //send moment js to index ejs
@@ -28,6 +30,64 @@ const router = express.Router();
       Player.find().sort({ createdAt: -1 })
       .then(result => {
         res.render('players/index', { players: result, title: 'All players' });
+      })
+      .catch(err => {
+        console.log(err);
+      }); 
+    }
+  });
+
+  // all active players render
+  router.get('/players/active', (req, res) => {
+    //send moment js to index ejs
+    res.locals.moment = moment;
+    if(req.query.search){
+      const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+      Player.find({gamertag:regex}).sort({ createdAt: -1 })
+      .then(result => {
+        res.render('players/active', { players: result, title: 'Active players' });
+      })
+      .catch(err => {
+        console.log(err);
+      }); 
+    } else{
+      //declare an active player
+      const activePlayer = {
+        "isactive": true 
+      }
+      //show only active players
+      Player.find(activePlayer).sort({ createdAt: -1 })
+      .then(result => {
+        res.render('players/active', { players: result, title: 'Active players' });
+      })
+      .catch(err => {
+        console.log(err);
+      }); 
+    }
+  });
+  
+  // fortnite
+  router.get('/fortnite', (req, res) => {
+    //send moment js to index ejs
+    res.locals.moment = moment;
+    if(req.query.search){
+      const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+      Player.find({gamertag:regex}).sort({ createdAt: -1 })
+      .then(result => {
+        res.render('players/fortnite', { players: result, title: ' Fortnite Tournament' });
+      })
+      .catch(err => {
+        console.log(err);
+      }); 
+    } else{
+      //declare an active player
+      const activePlayer = {
+        "isactive": true 
+      }
+      //show only active players
+      Player.find(activePlayer).sort({ createdAt: -1 })
+      .then(result => {
+        res.render('players/active', { players: result, title: 'Fortnite Tournament' });
       })
       .catch(err => {
         console.log(err);
@@ -82,7 +142,7 @@ const router = express.Router();
   const oldPlayer = req.params.body;
  
 
-  Player.findByIdAndUpdate(req.params.id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout, "isactive":req.body.isactive}, {new: true}, function(err, result){
+  Player.findByIdAndUpdate(req.params.id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout, "isactive":req.body.isactive, "fortnitescore":req.body.fortnitescore, "fifascore": req.body.fifascore,"ctrscore": req.body.ctrscore }, {new: true}, function(err, result){
     console.log(req.body.name);
     if(err) {
         console.log(err);

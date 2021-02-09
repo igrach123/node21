@@ -31,17 +31,20 @@ app.use((req, res, next) => {
   next();
 });
 
-
+//homepage redirect
 app.get('/', (req, res) => {
-  res.redirect('/blogs');
+  res.redirect('/players/active');
 });
 
 app.get('/about', (req, res) => {
   res.render('about', { title: 'About' });
 });
+
 // importin routes from routes/blogRoutes
+/* app.use(scoreRoutes); */
 app.use(blogRoutes);
 app.use(playerRoutes);
+
 
 // 404 page
 app.use((req, res) => {

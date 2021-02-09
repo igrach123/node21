@@ -8,10 +8,9 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col align-self-center">
+                    <div class="col-sm-6">
                         <h2 class="text-center">Update Player</h2>
                         <br>
-
                         <form action="/updateplayer/<%= player._id%>?_method=POST " method="POST">
                             <div class="form-group">
                                 <label for="name">Player Name</label>
@@ -48,33 +47,44 @@
                               
                             </div>
                             <div class="form-group">
-                                <label for="checkout">id</label>
-                                <input type="text" class="form-control" id="_id" aria-describedby="_id"
-                                    value="<%= player._id  %>" name="_id" required>
+                                <label for="isactive">Active</label>
+                                <select name="isactive" id="isactive" class="form-control">
+                                    <option value="<%=player.isactive%>"><%=player.isactive%></option>
+                                  <option value="true">true</option>
+                                  <option value="false">false</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <h2>Tournament  Score</h2>
+                                <br>
+                                 <div class="form-group">                                                            
+                                    <label for="fortnitescore">Best Fortnite Score:</label>
+                                    <input type="number" class="form-control" id="fortnitescore" aria-describedby="fortnitescore"
+                                    value="<%=player.fortnitescore  %>" name="fortnitescore">
+                                  </div>
+                                 <div class="form-group">                                                            
+                                    <label for="fifascore">Best Fifa Score:</label>
+                                    <input type="number" class="form-control" id="fifascore" aria-describedby="fifascore"
+                                    value="<%=player.fifascore  %>" name="fifascore">
+                                  </div>
+                                 <div class="form-group">                                                            
+                                    <label for="ctrscore">Best Crash Team Racing Score:</label>
+                                    <input type="number" class="form-control" id="ctrscore" aria-describedby="ctrscore"
+                                    value="<%=player.ctrscore  %>" name="ctrscore">
+                                  </div>
+
                             </div>
 
-
                             <button type="submit" class="btn btn-primary">Submit</button>
+                            
                         </form>
 
-                    </div>
-                    <div class="col align-self-end">
-
-                    </div>
-
+                                      
                 </div>
 
                 <%- include('../partials/footer.ejs') %>
             </div>
-            <script>
-                const checkout = document.querySelector("span.checkout-label");
-                const checkoutinput = document.getElementById("checkout");
-                window.addEventListener('load', (event) => {
-                    checkoutinput.value = checkout.innerHTML;
-                    console.log( checkout.innerHTML + checkoutinput);
-});
-            </script>
-
     </body>
 
 </html>
