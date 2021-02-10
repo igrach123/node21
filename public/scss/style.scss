@@ -64,3 +64,32 @@ body {
 .fa-trash {
   pointer-events: none;
 }
+
+//player detaails page
+.avg {
+  font-size: 30px;
+
+  color: #717273;
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: 5px;
+}
+
+.details {
+  min-height: 355px;
+  display: inline-block;
+}
+
+.scorewrapper {
+  text-align: left;
+  width: 400px;
+  float: left;
+  padding: 25px;
+}
+.score-single {
+  img {
+    width: 80px;
+    vertical-align: middle;
+  }
+  text-align: center;
+}

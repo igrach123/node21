@@ -5,46 +5,35 @@
         <%- include("../partials/nav.ejs") %>
 
             <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 text-right">
-                        <h5>
-                            <img src="../<%= player.flag %>" class="" alt="..." width="35px">
-                            <%= player.name %>
-                        </h5>
-                        <h2>
-                            <%= player.gamertag%>
-                        </h2>
-                        <p class="age">
-                            <%= player.age %> years
-                        </p>
-                        <p class="checkout-date">
-                            <%= moment(player.checkout).format( 'DD-MMM-YYYY' ) %>
-                        </p>
-                        <a class="deleteplayer btn btn-warning" data-doc="<%= player._id %>"> <i class="fa fa-trash"></i> </a>
-                        <a href="/updateplayer/<%= player._id %>"><button class="btn btn-success"><i class="fa fa-cloud-upload"
-                                    aria-hidden="true"></i></button></a>
-                        <p class="isactive" id="isactive">
-                            Active: <%= player.isactive %>
-                        </p>
-                    </div>
-                    <div class="col-sm-4 text-left">
-                        <p class="fortnitescore">
-                            <p><img src="/img/games/fortnite.png" alt="" width="120px"></p>
-                            Best Fortnite Score <span> <%= player.fortnitescore %>  </span>
-                        </p>
-                        <p class="fifascore">
-                            <p><img src="/img/games/fifa.png" alt="" width="120px"></p>
-                            Best Fifa Placement <span> <%= player.fifascore %>  </span>
-                        </p>
-                        <p class="ctrscore">
-                            <p><img src="/img/games/crash.png" alt="" width="120px"></p>
-                            Best Crash Team Racing Placement <span> <%= player.ctrscore %>  </span>
-                        </p>
-                    </div>
-
+             
+                        <div class="well details">
+                           
+                                <div class="scorewrapper">
+                                    <h2><img src="../<%= player.flag %>" class="" alt="..." width="25px">
+                                        <%= player.gamertag %></h2>                                   
+                                    <p><strong>Name: </strong><%= player.name %></p>
+                                    <p><strong>Age: </strong><%= player.age %> </p>
+                                    <p class="checkout-date"><strong>Chekout: </strong>  <%= moment(player.checkout).format( 'DD-MMM-YYYY' ) %> </p>
+                                    <p class="isactive" id="isactive"><strong>Active: </strong><%= player.isactive %> </p>
+                                    <a class="deleteplayer btn btn-warning" data-doc="<%= player._id %>"> <i class="fa fa-trash"></i> </a>
+                                    <a href="/updateplayer/<%= player._id %>"><button class="btn btn-success"><i class="fa fa-cloud-upload"
+                                                aria-hidden="true"></i></button></a>                             
+                                </div>
+                                <div class="text-xs-center scorewrapper">   
+                                    <p class="text-xs-center h2"><strong>Skills & Scores</strong></p>
+                                                        
+                                    <div class="score-single"> <img src="/img/games/fortnite.png" alt="fortnite" class="img-fluid img-thumbnail float-left">                                                                                                 
+                                        <span class="avg"> <%= player.fortnitescore %></span> </div>
+                                    <div class="score-single"><img src="/img/games/fifa.png" alt="fifa" class="img-fluid img-thumbnail float-left">                                                                                                 
+                                        <span class="avg"> <%= player.fifascore %></span>     </div>             
+                                              
+                                     <div class="score-single"> <img src="/img/games/crash.png" alt="ctr" class="img-fluid img-thumbnail float-left">                                                                                                 
+                                         <span class="avg"> <%= player.ctrscore %></span> </div>          
+                                   
+                                </div>
+                                          
+                     
                 </div>
-              
-            
             </div>
 
             <%- include("../partials/footer.ejs") %>
