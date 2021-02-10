@@ -28,7 +28,8 @@ const playerSchema = new Schema({
     },
     checkout: {
         type : Date,
-        required: false
+        required: false,
+        default:Date.now
     },
     fortnitescore:{
         type: Number,
@@ -37,6 +38,19 @@ const playerSchema = new Schema({
     fifascore: {
         type: Number,
         required: false
+    },
+    tournaments: {        
+        mkdate: {
+            type: Date,
+            required: false,
+            default: Date.now
+        },
+        mkscore: {
+            type: Number,
+            required: false,
+           
+        }
+    
     },
    
     ctrscore: {
