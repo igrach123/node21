@@ -43,7 +43,7 @@
                                 <label for="checkout">checkout  <span class="checkout-label"> <%= moment(player.checkout).format( 'DD-MMM-YYYY' ) %></span></label>
 
                                 <input type="date" class="form-control" id="checkout" aria-describedby="checkout"
-                                    value="" name="checkout" required>
+                                    value="" name="checkout">
                               
                             </div>
                             <div class="form-group">
@@ -59,20 +59,26 @@
                                 <h2>Tournament  Score</h2>
                                 <br>
                                  <div class="form-group">                                                            
-                                    <label for="fortnitescore">Best Fortnite Score:</label>
+                                    <label for="fortnitescore"> Fortnite Score:</label>
                                     <input type="number" class="form-control" id="fortnitescore" aria-describedby="fortnitescore"
                                     value="<%=player.fortnitescore  %>" name="fortnitescore">
                                   </div>
                                  <div class="form-group">                                                            
-                                    <label for="fifascore">Best Fifa Score:</label>
+                                    <label for="fifascore"> Fifa Place:</label>
                                     <input type="number" class="form-control" id="fifascore" aria-describedby="fifascore"
                                     value="<%=player.fifascore  %>" name="fifascore">
                                   </div>
                                  <div class="form-group">                                                            
-                                    <label for="ctrscore">Best Crash Team Racing Score:</label>
+                                    <label for="ctrscore">Crash Team Racing Place:</label>
                                     <input type="number" class="form-control" id="ctrscore" aria-describedby="ctrscore"
-                                    value="<%=player.ctrscore  %>" name="ctrscore">
+                                    value="<%=player.ctrscore %>" name="ctrscore">
                                   </div>
+                                 <div class="form-group">                                                            
+                                    <label for="ctrscore">Mario Kart Racing Place:</label>
+                                    <input type="number" class="form-control" id="mkscore" aria-describedby="ctrscore"
+                                    value="<%=player.mkscore %>" name="mkscore">
+                                  </div>
+                               
 
                             </div>
 

@@ -7,11 +7,7 @@ const router = express.Router();
 
 // player routes////////////////////////
 
-  //render the create page
-  router.get('/players/create', (req, res) => {
-    res.render('players/create', { title: 'Create a player' });
-  });
-  
+
 
   // all players render
   router.get('/players', (req, res) => {
@@ -143,7 +139,7 @@ const router = express.Router();
  
 
   Player.findByIdAndUpdate(req.params.id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout, "isactive":req.body.isactive, "fortnitescore":req.body.fortnitescore, "fifascore": req.body.fifascore,"ctrscore": req.body.ctrscore }, {new: true}, function(err, result){
-    console.log(req.body.name);
+    
     if(err) {
         console.log(err);
         res.redirect("/404");
