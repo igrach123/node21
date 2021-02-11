@@ -80,12 +80,13 @@
                             <input type="number" class="form-control" id="ctrscore" aria-describedby="ctrscore"
                                 value="<%=player.ctrscore %>" name="ctrscore">
                         </div>
-                        <div class="form-group">
-                            <label for="test">test</label>
-                            <input type="text" class="form-control" id="test" aria-describedby="test" placeholder="test"
-                                name="test" value="<%=player.sub.test %>" required>
-                        </div>
+                        <div>
+                            <p> Last Updated : <%= moment(player.updatedAt).format( 'DD-MMM-YYYY' ) %>
+                            </p>
+                            <p> Player Created: <%= moment(player.createdAt).format( 'DD-MMM-YYYY' ) %>
+                            </p>
 
+                        </div>
 
                     </div>
 

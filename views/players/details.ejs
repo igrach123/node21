@@ -5,35 +5,66 @@
         <%- include("../partials/nav.ejs") %>
 
             <div class="container">
-             
-                        <div class="well details">
-                           
-                                <div class="scorewrapper">
-                                    <h2><img src="../<%= player.flag %>" class="" alt="..." width="25px">
-                                        <%= player.gamertag %></h2>                                   
-                                    <p><strong>Name: </strong><%= player.name %></p>
-                                    <p><strong>Age: </strong><%= player.age %> </p>
-                                    <p class="checkout-date"><strong>Chekout: </strong>  <%= moment(player.checkout).format( 'DD-MMM-YYYY' ) %> </p>
-                                    <p class="lastupdated"><strong>Last updated: </strong>  <%= moment(player.updatedAt).format( 'DD-MMM-YYYY' ) %> </p>
-                                    <p class="isactive" id="isactive"><strong>Active: </strong><%= player.isactive %> </p>
-                                    <a class="deleteplayer btn btn-warning" data-doc="<%= player._id %>"> <i class="fa fa-trash"></i> </a>
-                                    <a href="/updateplayer/<%= player._id %>"><button class="btn btn-success"><i class="fa fa-cloud-upload"
-                                                aria-hidden="true"></i></button></a>                             
-                                </div>
-                                <div class="text-xs-center scorewrapper">   
-                                    <p class="text-xs-center h2"><strong>Skills & Scores</strong></p>
-                                                        
-                                    <div class="score-single"> <img src="/img/games/fortnite.png" alt="fortnite" class="img-fluid img-thumbnail float-left">                                                                                                 
-                                        <span class="avg"> <%= player.fortnitescore %></span> </div>
-                                    <div class="score-single"><img src="/img/games/fifa.png" alt="fifa" class="img-fluid img-thumbnail float-left">                                                                                                 
-                                        <span class="avg"> <%= player.fifascore %></span>     </div>             
-                                              
-                                     <div class="score-single"> <img src="/img/games/crash.png" alt="ctr" class="img-fluid img-thumbnail float-left">                                                                                                 
-                                         <span class="avg"> <%= player.ctrscore %></span> </div>          
-                                   
-                                </div>
-                                          
-                     
+
+                <div class="well details">
+
+                    <div class="scorewrapper">
+                        <h2><img src="../<%= player.flag %>" class="" alt="..." width="25px">
+                            <%= player.gamertag %>
+                        </h2>
+                        <p><strong>Name: </strong>
+                            <%= player.name %>
+                        </p>
+                        <p><strong>Age: </strong>
+                            <%= player.age %>
+                        </p>
+                        <p class="checkout-date"><strong>Chekout: </strong>
+                            <%= moment(player.checkout).format( 'DD-MMM-YYYY' ) %>
+                        </p>
+
+
+                        <p class="isactive" id="isactive"><strong>Active: </strong>
+                            <%= player.isactive %>
+                                </>
+                                <a class="deleteplayer btn btn-warning" data-doc="<%= player._id %>"> <i
+                                        class="fa fa-trash"></i> </a>
+                                <a href="/updateplayer/<%= player._id %>"><button class="btn btn-success"><i
+                                            class="fa fa-cloud-upload" aria-hidden="true"></i></button></a>
+                    </div>
+                    <div class="text-xs-center scorewrapper">
+                        <p class="text-xs-center h2"><strong>Skills & Scores</strong></p>
+
+                        <div class="score-single"> <img src="/img/games/fortnite.png" alt="fortnite"
+                                class="img-fluid img-thumbnail float-left">
+                            <span class="avg">
+                                <%= player.fortnitescore %>
+                            </span>
+                        </div>
+                        <div class="score-single"><img src="/img/games/fifa.png" alt="fifa"
+                                class="img-fluid img-thumbnail float-left">
+                            <span class="avg">
+                                <%= player.fifascore %>
+                            </span>
+                        </div>
+
+                        <div class="score-single"> <img src="/img/games/crash.png" alt="ctr"
+                                class="img-fluid img-thumbnail float-left">
+                            <span class="avg">
+                                <%= player.ctrscore %>
+                            </span>
+                        </div>
+
+                        <br>
+                        <p class="lastupdated"><strong>Last updated: </strong>
+                            <%= moment(player.updatedAt).format( 'DD-MMM-YYYY' ) %>
+                        </p>
+                        <p class="createdat"><strong>Player Created: : </strong>
+                            <%= moment(player.createdAt).format( 'DD-MMM-YYYY' ) %>
+                        </p>
+
+                    </div>
+
+
                 </div>
             </div>
 

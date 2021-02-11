@@ -78,7 +78,7 @@ const router = express.Router();
        console.log(req.body);
        const player = new Player(req.body);
        //add a embeded value!!!!!!!!!!!!!!!!!!!!!!!!!!!
-       player.sub.test = req.body.test;
+      /*  player.sub.test = req.body.test; */
        player.save()
       .then((result) => {
           res.redirect('/players');
@@ -124,7 +124,7 @@ const router = express.Router();
   const oldPlayer = req.params.body;
  
 
-  Player.findByIdAndUpdate(req.params.id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout, "isactive":req.body.isactive, "fortnitescore":req.body.fortnitescore, "fifascore": req.body.fifascore,"ctrscore": req.body.ctrscore, "sub.test" : req.body.test, "sub.test2" : "test2 bitch" }, {new: true}, function(err, result){
+  Player.findByIdAndUpdate(id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout, "isactive":req.body.isactive, "fortnitescore":req.body.fortnitescore, "fifascore": req.body.fifascore,"ctrscore": req.body.ctrscore }, {new: true}, function(err, result){
     
     if(err) {
         console.log(err);

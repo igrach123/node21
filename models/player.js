@@ -24,11 +24,13 @@ const playerSchema = new Schema({
     },
     isactive: {
         type: Boolean,
-        required: true
+        required: true,
+        default :true
     },
     checkout: {
         type : Date,
-        required: false
+        required: false,
+        default: Date.now()
     },
     fortnitescore:{
         type: Number,
@@ -39,18 +41,38 @@ const playerSchema = new Schema({
         required: false
     },
    
-    sub: {
+    tournaments: {
       
-          test: {
-            type:String,
+          fifa: {
+                fiscore:{
+                    type: Number
+                },
+                fifadate:{
+                    type : Date,
+                    default : Date.now()
+                }
 
           },
-          test2: {
-            type:String,
+          fortnite: {
+                forscore:{
+                    type: Number
+                },
+                fordate:{
+                    type : Date,
+                    default : Date.now()
+                }
 
           },
-       
-      
+          crashtr: {
+                crashscore:{
+                    type: Number
+                },
+                crashdate:{
+                    type : Date,
+                    default : Date.now()
+                }
+          }
+              
     },
    
     ctrscore: {

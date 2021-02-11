@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 //import routes
 const blogRoutes = require('./routes/blogRoutes');
 const playerRoutes = require('./routes/playerRoutes');
+const fortniteRoutes = require('./routes/fortniteRoutes');
 
 //fire the express app
 const app = express();
@@ -44,6 +45,7 @@ app.get('/about', (req, res) => {
 /* app.use(scoreRoutes); */
 app.use(blogRoutes);
 app.use(playerRoutes);
+app.use(fortniteRoutes);
 
 
 // 404 page
