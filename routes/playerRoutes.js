@@ -1,13 +1,9 @@
 const express = require('express');
 const moment = require('moment');
 const Player = require('../models/player');
-
-
 const router = express.Router();
 
 // player routes////////////////////////
-
-
 
   // all players render
   router.get('/players', (req, res) => {
@@ -31,6 +27,10 @@ const router = express.Router();
         console.log(err);
       }); 
     }
+  });
+  // render create a new player
+  router.get('/players/create', (req, res) => {
+    res.render('players/create', { title: 'Create a new player' });
   });
 
   // all active players render
@@ -61,47 +61,33 @@ const router = express.Router();
       }); 
     }
   });
-  
-  // fortnite
-  router.get('/fortnite', (req, res) => {
-    //send moment js to index ejs
-    res.locals.moment = moment;
-    if(req.query.search){
-      const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-      Player.find({gamertag:regex}).sort({ createdAt: -1 })
-      .then(result => {
-        res.render('players/fortnite', { players: result, title: ' Fortnite Tournament' });
-      })
-      .catch(err => {
+   //create a new player with the form and redirect it to players
+   router.get('/players', (req, res) => {
+     
+    const player = new Player(req.body)
+    .then((result) => {
+      res.render('/players/create', { players: result, title: 'create players' });
+    })
+    .catch((err) => {
         console.log(err);
-      }); 
-    } else{
-      //declare an active player
-      const activePlayer = {
-        "isactive": true 
-      }
-      //show only active players
-      Player.find(activePlayer).sort({ createdAt: -1 })
-      .then(result => {
-        res.render('players/active', { players: result, title: 'Fortnite Tournament' });
-      })
-      .catch(err => {
-        console.log(err);
-      }); 
-    }
+    });
   });
-  
+   
   //create a new player with the form and redirect it to players
   router.post('/players', (req, res) => {
-      const player = new Player(req.body);
-      player.save()
+       console.log(req.body);
+       const player = new Player(req.body);
+       //add a embeded value!!!!!!!!!!!!!!!!!!!!!!!!!!!
+       player.sub.test = req.body.test;
+       player.save()
       .then((result) => {
           res.redirect('/players');
       })
       .catch((err) => {
           console.log(err);
       });
-  })
+  });
+ 
   //show single player details
   router.get('/players/:id' , (req,res) => {
       //send moment js to details ejs
@@ -129,7 +115,7 @@ const router = express.Router();
     .catch((err) => {
         console.log(err);
     });
-});
+  });
 
  //update player with the update post form and redirect to the players site
  router.post('/updateplayer/:id' , (req,res) => {
@@ -138,7 +124,7 @@ const router = express.Router();
   const oldPlayer = req.params.body;
  
 
-  Player.findByIdAndUpdate(req.params.id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout, "isactive":req.body.isactive, "fortnitescore":req.body.fortnitescore, "fifascore": req.body.fifascore,"ctrscore": req.body.ctrscore }, {new: true}, function(err, result){
+  Player.findByIdAndUpdate(req.params.id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout, "isactive":req.body.isactive, "fortnitescore":req.body.fortnitescore, "fifascore": req.body.fifascore,"ctrscore": req.body.ctrscore, "sub.test" : req.body.test, "sub.test2" : "test2 bitch" }, {new: true}, function(err, result){
     
     if(err) {
         console.log(err);
