@@ -34,11 +34,13 @@ const playerSchema = new Schema({
     },
     fortnitescore:{
         type: Number,
-        require: false
+        require: false,
+        default : "0"
     },
     fifascore: {
         type: Number,
-        required: false
+        required: false,
+        default : "0"
     },
    
     tournaments: {
@@ -77,7 +79,8 @@ const playerSchema = new Schema({
    
     ctrscore: {
         type: Number,
-        required: false
+        required: false,
+        default : "0"
     }
    
   
