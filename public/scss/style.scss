@@ -93,3 +93,56 @@ body {
   }
   text-align: center;
 }
+
+//fortnite page
+.fn-header {
+  background-color: #ffd300;
+}
+#fortnite-home {
+  .score-span {
+    font-size: 2.3rem;
+    font-weight: 900;
+    color: lightgray;
+    text-align: left;
+    text-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  }
+  .playerplace,
+  .playerkills,
+  .tf-score {
+    width: 75px;
+  }
+  .list-group-item {
+    padding: 0px;
+    border: none;
+
+    .endscore {
+      display: inline-block;
+      font-size: 2rem;
+      color: blueviolet;
+      font-weight: 900;
+    }
+  }
+}
+.extrascorewrapp {
+  p {
+    padding: 0;
+    margin: 0;
+  }
+  span.extraname {
+    font-weight: 900;
+    font-size: 1.7rem;
+    letter-spacing: 3px;
+  }
+  .extrascore {
+    font-size: 2rem;
+    color: blueviolet;
+    font-weight: 900;
+    padding-left: 30px;
+    text-align: right !important;
+  }
+}
+.timetr {
+  font-size: 1.5rem;
+  text-align: left;
+  color: #ffd300;
+}

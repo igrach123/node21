@@ -1,6 +1,8 @@
 const express = require('express');
+const moment = require('moment');
 const Game = require('../models/blog');
 const Player = require('../models/player');
+const Score = require('../models/tournamentscores');
 
 
 const router = express.Router();
@@ -9,17 +11,19 @@ const router = express.Router();
 
 //how to use multiple collections on one  ejs
       router.get("/fortnite",function(req,res) {
+        res.locals.moment = moment;
             var player={}; //Create Empty player Object
             var blogs={}; //Create Empty games&blogs Object
             var vendors={};//Create Empty vendor Objext
-            const activePlayer = {
-                  "isactive": true 
-                }
 
-           
-            Player.find(activePlayer).sort({ createdAt: -1 })
+            const activePlayer = {
+                  "isactive": true,
+                  "daily": true,                 
+                }    
+
+            Player.find(activePlayer).sort({ fortnitescore: -1 })
             .then(result => {
-              players = result 
+              players = result;
             })
             .catch(err => {
               console.log(err);
@@ -36,7 +40,61 @@ const router = express.Router();
                 }
             });
         });
-      
+         //render the single player update site site
+         router.get('/fortnitefullupdateplayer/:id' , (req,res) => {
+          res.locals.moment = moment;
+           const id = req.params.id; 
+           Player.findById(id)
+            .then((result) => {
+                res.render('fortnite/update' , {player: result, title:'Update Player for Fortnite'})
+                
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+          });
+        
+        //UPDATE FORTNITE SCORE ON CLICK
+        router.post('/fortniteupdateplayer/:id' , (req,res) => {
+          res.locals.moment = moment;
+          const id = req.params.id; 
+          
+          console.log(req.body)
+                
+          Player.findByIdAndUpdate(id, {"fortnitescore":req.body.fortnitescore }, {new: true}, function(err, result){
+            
+            if(err) {
+                console.log(err);
+                res.redirect("/404");
+            } else {
+                console.log(result);
+                res.redirect('/fortnite');
+            }
+          });
+        });
 
+
+  
+   //update player with the update post form and redirect to the players site
+   router.post('/fortnitefullupdateplayer/:id' , (req,res) => {
+  
+    const id = req.params.id; 
+    const oldPlayer = req.params.body;
+   
+  
+    Player.findByIdAndUpdate(id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout, "isactive":req.body.isactive, "fortnitescore":req.body.fortnitescore, "fifascore": req.body.fifascore,"ctrscore": req.body.ctrscore, "daily": req.body.daily }, {new: true}, function(err, result){
+      
+      if(err) {
+          console.log(err);
+          res.redirect("/404");
+      } else {
+          console.log(result);
+          res.redirect('/fortnite');
+      }
+    });
+  });
+  
+
+        //UPDATE PLAYER SITE LINK FROM FORTNITE SITE
   
   module.exports = router;

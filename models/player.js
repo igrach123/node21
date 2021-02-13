@@ -27,6 +27,11 @@ const playerSchema = new Schema({
         required: true,
         default :true
     },
+    daily: {
+        type: Boolean,
+        required: true,
+        default :false
+    },
     checkout: {
         type : Date,
         required: false,
