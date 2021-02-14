@@ -37,20 +37,30 @@ const playerSchema = new Schema({
         required: false,
         default: Date.now()
     },
-    fortnitescore:{
-        type: Number,
-        require: false,
-        default : "0"
-    },
     fifascore: {
         type: Number,
-        required: false,
-        default : "0"
+        required: false
+        
     },
-   
     tournaments: {
-      
-          fifa: {
+        fortnite: {
+            place: {
+                type: Number,
+                default: 0
+            },
+            kills:{
+                type: Number,
+                default: 0
+            },
+            forscore: {
+                type: Number    
+            },
+            fordate: {
+                type : Date,
+                default : Date.now()
+            }
+        },
+        fifa: {
                 fiscore:{
                     type: Number
                 },
@@ -58,19 +68,9 @@ const playerSchema = new Schema({
                     type : Date,
                     default : Date.now()
                 }
-
-          },
-          fortnite: {
-                forscore:{
-                    type: Number
-                },
-                fordate:{
-                    type : Date,
-                    default : Date.now()
-                }
-
-          },
-          crashtr: {
+        },
+        
+        crashtr: {
                 crashscore:{
                     type: Number
                 },
@@ -78,17 +78,13 @@ const playerSchema = new Schema({
                     type : Date,
                     default : Date.now()
                 }
-          }
-              
+        }
     },
-   
     ctrscore: {
         type: Number,
         required: false,
         default : "0"
     }
-   
-  
     
 }, { timestamps:true });
 

@@ -29,6 +29,17 @@
 //font import
 body {
   font-family: "Roboto Condensed", sans-serif;
+  background: #1c92d2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #f2fcfe,
+    #1c92d2
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #f2fcfe,
+    #1c92d2
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .card {
   margin-bottom: 5px;
@@ -95,10 +106,20 @@ body {
 }
 
 //fortnite page
+.players-home-form {
+  margin: 0 auto;
+  .form-inline {
+    margin-left: 25%;
+  }
+}
 .fn-header {
   background-color: #ffd300;
 }
+.ul-wrapper {
+}
 #fortnite-home {
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   .score-span {
     font-size: 2.3rem;
     font-weight: 900;
@@ -109,17 +130,42 @@ body {
   .playerplace,
   .playerkills,
   .tf-score {
-    width: 75px;
+    width: 50px;
+    border-radius: 5px;
+    border-color: #f3f3f3;
   }
-  .list-group-item {
-    padding: 0px;
+  .list-group-item2 {
     border: none;
-
+    background-color: white;
+    border-radius: 5px;
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 5px;
+    text-align: left;
+    .gamertagturnir {
+      width: 80px;
+      display: inline-block;
+      font-weight: 600;
+    }
+    form {
+      display: inline-block;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    img {
+      margin-left: 5px;
+    }
     .endscore {
       display: inline-block;
-      font-size: 2rem;
+      font-size: 1.5rem;
       color: blueviolet;
       font-weight: 900;
+    }
+    .isdailyonfn {
+      font-size: 1rem;
+      border-radius: 5px;
+      padding: 2px;
+      margin-top: 3px;
     }
   }
 }

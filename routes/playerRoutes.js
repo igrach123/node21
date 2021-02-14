@@ -81,7 +81,7 @@ const router = express.Router();
       /*  player.sub.test = req.body.test; */
        player.save()
       .then((result) => {
-          res.redirect('/players');
+          res.redirect('/players/active');
       })
       .catch((err) => {
           console.log(err);
@@ -122,16 +122,17 @@ const router = express.Router();
 
   const id = req.params.id; 
   const oldPlayer = req.params.body;
+  console.log( "this is sent" + req.body)
  
 
-  Player.findByIdAndUpdate(id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout, "isactive":req.body.isactive, "fortnitescore":req.body.fortnitescore, "fifascore": req.body.fifascore,"ctrscore": req.body.ctrscore, "daily": req.body.daily }, {new: true}, function(err, result){
+  Player.findByIdAndUpdate(id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout, "isactive":req.body.isactive,"fifascore": req.body.fifascore,"ctrscore": req.body.ctrscore, "daily": req.body.daily,  "tournaments.fortnite.place": req.body.place, "tournaments.fortnite.kills": req.body.kills,"tournaments.fortnite.forscore": req.body.forscore }, {new: true}, function(err, result){
     
     if(err) {
         console.log(err);
         res.redirect("/404");
     } else {
         console.log(result);
-        res.redirect('/players')
+        res.redirect('/players/active')
     }
   });
 });
@@ -143,7 +144,7 @@ const router = express.Router();
     
     Player.findByIdAndDelete(id)
       .then(result => {
-        res.json({ redirect: '/players' });
+        res.json({ redirect: '/players/active' });
       })
       .catch(err => {
         console.log(err);

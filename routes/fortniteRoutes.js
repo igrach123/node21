@@ -21,7 +21,7 @@ const router = express.Router();
                   "daily": true,                 
                 }    
 
-            Player.find(activePlayer).sort({ fortnitescore: -1 })
+            Player.find(activePlayer).sort({ "tournaments.fortnite.forscore": -1 })
             .then(result => {
               players = result;
             })
@@ -40,6 +40,8 @@ const router = express.Router();
                 }
             });
         });
+
+
          //render the single player update site site
          router.get('/fortnitefullupdateplayer/:id' , (req,res) => {
           res.locals.moment = moment;
@@ -54,14 +56,15 @@ const router = express.Router();
             });
           });
         
+
         //UPDATE FORTNITE SCORE ON CLICK
         router.post('/fortniteupdateplayer/:id' , (req,res) => {
           res.locals.moment = moment;
-          const id = req.params.id; 
-          
-          console.log(req.body)
-                
-          Player.findByIdAndUpdate(id, {"fortnitescore":req.body.fortnitescore }, {new: true}, function(err, result){
+          const id = req.params.id;
+          console.log(req.body);  
+
+          console.log(req.body)           
+          Player.findByIdAndUpdate(id, { "tournaments.fortnite.place": req.body.place, "tournaments.fortnite.kills": req.body.kills,"tournaments.fortnite.forscore": req.body.forscore, "daily": req.body.daily}, {new: true}, function(err, result){
             
             if(err) {
                 console.log(err);
@@ -75,14 +78,14 @@ const router = express.Router();
 
 
   
-   //update player with the update post form and redirect to the players site
+   //update player with the update post form and redirect to the fortnite  site
    router.post('/fortnitefullupdateplayer/:id' , (req,res) => {
   
     const id = req.params.id; 
     const oldPlayer = req.params.body;
    
   
-    Player.findByIdAndUpdate(id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout, "isactive":req.body.isactive, "fortnitescore":req.body.fortnitescore, "fifascore": req.body.fifascore,"ctrscore": req.body.ctrscore, "daily": req.body.daily }, {new: true}, function(err, result){
+    Player.findByIdAndUpdate(id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout, "isactive":req.body.isactive,"fifascore": req.body.fifascore,"ctrscore": req.body.ctrscore, "daily": req.body.daily,  "tournaments.fortnite.place": req.body.place, "tournaments.fortnite.kills": req.body.kills,"tournaments.fortnite.forscore": req.body.forscore }, {new: true}, function(err, result){
       
       if(err) {
           console.log(err);

@@ -11,14 +11,16 @@
         <img src="img/games/logogr.png" alt="gameroom logo" width="150px"> <br>
     </h1>
    </div>
-      <div class="container text-center" id="fortnite-home">
+     <div class="container-fluid" id="fortnite-home">
+      <div class="container text-center" >
       
         <div class="players-home-form">
           <form class="form-inline" action="/players" method="GET">
             <input class="form-control" name="search" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success " type="submit">Search</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Add a New Gamer
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+              <i
+              class="fa fa-plus"></i>
             </button>
           </form>
         </div>
@@ -31,59 +33,52 @@
             <ul class="list-group">
               <% if (players.length> 0) { %>
                 <% players.forEach(player=> { %>            
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <li class="list-group-item2">
                       <img src="<%= player.flag %>" class="card-img-top img-thumbnail" style="width: 40px;" alt="<%= player.flag %> ">
-                        <%= player.gamertag %> 
-                        <span class="badge">
-                           <span><%= player.age %>  </span>                   
-                          <span class="badge ">
-                              <a href="/fortnitefullupdateplayer/<%= player._id %>"><button class="btn btn-success"><i
+                       <span class="gamertagturnir"><%= player.gamertag %> </span> 
+                      <span><%= player.age %></span>                   
+                              <a href="/fortnitefullupdateplayer/<%= player._id %>"><button class="btn btn-outline-success"><i
                                     class="fa fa-cloud-upload" aria-hidden="true"></i></button></a>
-                              <a class="deleteplayer btn btn-warning" data-doc="<%= player._id %>"> <i
-                                  class="fa fa-trash"></i>
-                            </a>
-                        </span>
-                     </span>
-                <!--  form for updating fortnite score -->    
-                     <form action="/fortniteupdateplayer/<%= player._id%>?_method=POST " method="POST">
-                      <input type="number" placeholder="Place" class="playerplace">
-                      <input type="number" placeholder="Kills" class="playerkills">
-                       <button class="btn btn-info score" > T </button>
-                       <input name="fortnitescore" type="number" placeholder="Score" class="tf-score" value="<%= player.fortnitescore %> " >
-                       <span class="endscore"><%= player.fortnitescore %> </span>
-                     
-                     </form>
-                
-                  
+                                   
+                      <!--form for updating fortnite score-->    
+                      <form action="/fortniteupdateplayer/<%= player._id%>?_method=POST " method="POST">
+                        
+                        P <input type="number" placeholder="<%= player.tournaments.fortnite.place %> " class="playerplace" name="place" value="<%= player.tournaments.fortnite.place %>  ">
+                        K <input type="number" placeholder="<%= player.tournaments.fortnite.kills %>" class="playerkills" name="kills" value="<%= player.tournaments.fortnite.kills %>  ">
+                        <button class="btn btn-info score" > T </button>
+                        <input name="forscore" type="number" placeholder="Score" class="tf-score invisible" value="<%= player.tournaments.fortnite.forscore %>" >
+                        <span class="endscore"><%= player.tournaments.fortnite.forscore %> </span>
+                        <select name="daily" id="daily" class="isdailyonfn btn-outline-success">
+                          <option value="true">DA</i></option>
+                          <option value="false">NE</i></option>
+                        </select>  
+                      </form>
                     </li>
-               
-                  
-                  <% }) %>
-                    <% } else { %>
-                      <p>There are no players to display...</p>
-                      <% } %>
-                    </ul>
+                        
+                    <% }) %>
+                      <% } else { %>
+                        <p>There are no players to display...</p>
+                        <% } %>
+                      </ul>
                   </div>
 
-
-
-
-
-                <div class="offset-sm-2 col-sm-4 extrascorewrapp"> 
+                <div class="offset-sm-1 col-sm-4 extrascorewrapp"> 
+                  
                     <p class="timetr"> <%= moment().format( 'DD-MMM-YYYY' )%>  </p>
                       <% if (players.length> 0) { %>
                         <% players.forEach(player=> { %>            
-                          <p class="text-left"><span class="extraname"><%= player.gamertag %></span> <span class="extrascore"><%= player.fortnitescore %></span> </p>
+                          <p class="text-left"><span class="extraname"><%= player.gamertag %></span> <span class="extrascore"><%= player.tournaments.fortnite.forscore %></span> </p>
                         
                           
-                     <% }) %>
-                            <% } else { %>
-                              <p>There are no players to display...</p>
-                              <% } %>
+                      <% }) %>
+                      <% } else { %>
+                        <p>There are no players to display...</p>
+                      <% } %>
                   
                     </div>
           </div>
         </div>
+     </div>
 
 
 
@@ -100,8 +95,7 @@
           e.preventDefault();
            function calcualteScore(e){
            
-            const item = e.target;
-           
+            const item = e.target;          
             if (item.classList[2] === "score") {          
            
             const list1 = item.parentElement;
