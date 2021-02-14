@@ -1,0 +1,36 @@
+<script>
+
+    const listItem = document.querySelector('ul.list-group'); 
+  
+
+    listItem.addEventListener('click', calcualteScore);
+    e.preventDefault();
+     function calcualteScore(e){
+     
+      const item = e.target;          
+      if (item.classList[2] === "score") {          
+     
+      const list1 = item.parentElement;
+      console.log(list1);        
+      const placeValue = list1.childNodes[1].value;
+      console.log(placeValue); 
+      const KillsValue = list1.childNodes[3].value;
+      console.log(KillsValue); 
+      const ScoreValue = list1.childNodes[7];
+      console.log(ScoreValue); 
+    ;
+      // SCORE VALUE CALCULATOR
+      if (placeValue == 1) {
+        ScoreValue.value = (100 - placeValue) + (30 * KillsValue) + 100;
+      } else if (placeValue == 2) {
+        ScoreValue.value = (100 - placeValue) + (30 * KillsValue) + 30;
+      } else if (placeValue == 3) {
+        ScoreValue.value = (100 - placeValue) + (30 * KillsValue) + 10;
+      } else if(placeValue == 0) {
+        ScoreValue.value = 0;
+      }else{
+        ScoreValue.value = (100 - placeValue) + (30 * KillsValue);
+      };         
+     };
+    };
+  </script>
