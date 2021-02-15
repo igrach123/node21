@@ -61,6 +61,7 @@ const router = express.Router();
       }); 
     }
   });
+
    //create a new player with the form and redirect it to players
    router.get('/players', (req, res) => {
      
@@ -136,6 +137,21 @@ const router = express.Router();
     }
   });
 });
+ router.post('/updateplayer/daily/:id' , (req,res) => {
+  const id = req.params.id; 
+
+
+  Player.findByIdAndUpdate(id, {"daily": req.body.daily,}, {new: true}, function(err, result){
+    
+    if(err) {
+        console.log(err);
+        res.redirect("/404");
+    } else {
+        console.log(result);
+        res.redirect('/players/active')
+    }
+  });
+});
 
  
   //delete a single blog on details or on click page
@@ -144,7 +160,7 @@ const router = express.Router();
     
     Player.findByIdAndDelete(id)
       .then(result => {
-        res.json({ redirect: '/players/active' });
+        res.json({ redirect:'/players/active'});
       })
       .catch(err => {
         console.log(err);

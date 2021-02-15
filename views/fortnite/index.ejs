@@ -22,7 +22,9 @@
               <i
               class="fa fa-plus"></i>
             </button>
+            <span class="timetr"> <%= moment().format( 'DD-MMM-YYYY' )%>  </span>
           </form>
+      
         </div>
           <!-- Modal -->
           <%- include("../partials/newplayermodal.ejs") %>
@@ -45,7 +47,7 @@
                         
                         P <input type="number" placeholder="<%= player.tournaments.fortnite.place %> " class="playerplace" name="place" value="<%= player.tournaments.fortnite.place %>  ">
                         K <input type="number" placeholder="<%= player.tournaments.fortnite.kills %>" class="playerkills" name="kills" value="<%= player.tournaments.fortnite.kills %>  ">
-                        <button class="btn btn-info score" > T </button>
+                        <button class="btn btn-danger score" ><i class="fa  fa-2x fa-crosshairs" aria-hidden="true"></i> </button>
                         <input name="forscore" type="number" placeholder="Score" class="tf-score invisible" value="<%= player.tournaments.fortnite.forscore %>" >
                         <span class="endscore"><%= player.tournaments.fortnite.forscore %> </span>
                         <select name="daily" id="daily" class="isdailyonfn btn-outline-success">
@@ -64,10 +66,10 @@
 
                 <div class="offset-sm-1 col-sm-4 extrascorewrapp"> 
                   
-                    <p class="timetr"> <%= moment().format( 'DD-MMM-YYYY' )%>  </p>
+                  
                       <% if (players.length> 0) { %>
                         <% players.forEach(player=> { %>            
-                          <p class="text-left"><span class="extraname"><%= player.gamertag %></span> <span class="extrascore"><%= player.tournaments.fortnite.forscore %></span> </p>
+                          <p class="text-left "><span class="extraname"><%= player.gamertag %></span> <span class="extrascore"><%= player.tournaments.fortnite.forscore %></span> </p>
                         
                           
                       <% }) %>

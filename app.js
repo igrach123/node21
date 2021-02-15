@@ -37,9 +37,6 @@ app.get('/', (req, res) => {
   res.redirect('/players/active');
 });
 
-app.get('/about', (req, res) => {
-  res.render('about', { title: 'About' });
-});
 
 // importin routes from routes/blogRoutes
 /* app.use(scoreRoutes); */

@@ -1,0 +1,46 @@
+<script>
+  //delet player on active and home logic
+    const delplayer = document.querySelector('.card-wrapper');
+    delplayer.addEventListener('click' , delfunction);
+    function delfunction(e){
+        const item = e.target;   
+      console.log(item);
+
+      if(item.classList[0] === "deleteplayer"){
+      const delplayer = item;
+
+      const endpoint = `/players/${delplayer.dataset.doc}`;
+      fetch(endpoint, {
+        method: 'DELETE'
+      })
+        .then((response) => response.json())
+        .then(data => window.location.href = data.redirect)
+        .catch((err) => console.log(err));
+      }
+    };
+
+    // change active status styles
+    
+    const select = document.querySelectorAll('.daily');
+    console.log(select);
+   
+
+
+
+    select.forEach(select => {
+      console.log(select.childNodes[1].label);
+   
+     if (select.childNodes[1].label === "true" ){
+      console.log('it works');
+     select.childNodes[1].innerHTML = "DA";
+     select.classList.add('text-success');
+     
+     }else{
+      select.childNodes[1].innerHTML = "NE";
+     select.classList.add('text-danger');
+     }
+   
+      
+    });
+
+  </script>

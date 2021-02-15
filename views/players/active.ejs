@@ -15,7 +15,7 @@
             <input class="form-control" name="search" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success " type="submit">Search</button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Add a New Gamer
+             New Gamer
             </button>
           </form>
         </div>
@@ -27,7 +27,7 @@
 
 
 
-          <div class="row text-center">
+          <div class="card-wrapper row text-center card-wrapper">
             <% if (players.length> 0) { %>
               <% players.forEach(player=> { %>
                 <div class=" col-sm-auto col-md-2 d-flex align-items-stretch text-center">
@@ -38,7 +38,7 @@
                           <%= player.age %>
                         </span>
                     </p>
-
+                 
                     <div class="card-body">
                       <h5 class="card-title">
                         <%= player.gamertag%>
@@ -52,7 +52,21 @@
                       </a>
                       <a href="/updateplayer/<%= player._id %>"><button class="btn btn-success"><i
                             class="fa fa-cloud-upload" aria-hidden="true"></i></button></a>
+                              <!--  //update daily form -->
+                    
                     </div>
+
+                    <form action="/updateplayer/daily/<%= player._id%>?_method=POST " method="POST">
+                      <span class="small">DAILY:</span>
+                      <select name="daily" class="daily">
+                        <option value="<%=player.daily%>">
+                            <%=player.daily%>
+                        </option>
+                        <option value="true">yes</option>
+                        <option value="false">no</option>
+                    </select>
+                    <button type="submit" class="btn btn-secondary"><i class="fa fa-download" aria-hidden="true"></i></button>
+                    </form>
                   </div>
                 </div>
                 <% }) %>
@@ -66,20 +80,7 @@
       </div>
 
       <%- include("../partials/footer.ejs") %>
-        <script>
-          const delplayer = document.querySelector('a.deleteplayer');
-          delplayer.addEventListener('click', (e) => {
-            const endpoint = `/players/${delplayer.dataset.doc}`;
-            fetch(endpoint, {
-              method: 'DELETE'
-            })
-              .then((response) => response.json())
-              .then(data => window.location.href = data.redirect)
-              .catch((err) => console.log(err));
-          })
-
-        </script>
-
+      <%- include("../partials/deleteplayer.ejs") %>
 
   </body>
 

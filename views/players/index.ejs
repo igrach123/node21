@@ -25,9 +25,7 @@
         <!-- Modal -->
         <%- include("../partials/newplayermodal.ejs") %>
 
-
-
-          <div class="row text-center">
+          <div class="card-wrapper row text-center">
             <% if (players.length> 0) { %>
               <% players.forEach(player=> { %>
                 <div class=" col-sm-auto col-md-2 d-flex align-items-stretch text-center">
@@ -38,7 +36,7 @@
                           <%= player.age %>
                         </span>
                     </p>
-
+                    
                     <div class="card-body">
                       <h5 class="card-title">
                         <%= player.gamertag%>
@@ -53,6 +51,17 @@
                       <a href="/updateplayer/<%= player._id %>"><button class="btn btn-success"><i
                             class="fa fa-cloud-upload" aria-hidden="true"></i></button></a>
                     </div>
+                    <form action="/updateplayer/daily/<%= player._id%>?_method=POST " method="POST">
+                      <span class="small">DAILY:</span>
+                      <select name="daily" class="daily">
+                        <option value="<%=player.daily%>">
+                            <%=player.daily%>
+                        </option>
+                        <option value="true">yes</option>
+                        <option value="false">no</option>
+                    </select>
+                    <button type="submit" class="btn btn-secondary"><i class="fa fa-download" aria-hidden="true"></i></button>
+                    </form>
                   </div>
                 </div>
                 <% }) %>
@@ -66,19 +75,9 @@
       </div>
 
       <%- include("../partials/footer.ejs") %>
-        <script>
-          const delplayer = document.querySelector('a.deleteplayer');
-          delplayer.addEventListener('click', (e) => {
-            const endpoint = `/players/${delplayer.dataset.doc}`;
-            fetch(endpoint, {
-              method: 'DELETE'
-            })
-              .then((response) => response.json())
-              .then(data => window.location.href = data.redirect)
-              .catch((err) => console.log(err));
-          })
 
-        </script>
+     <!--  delte player logic -->
+      <%- include("../partials/deleteplayer.ejs") %>
 
 
   </body>
