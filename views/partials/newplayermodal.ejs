@@ -33,20 +33,23 @@
                                     placeholder="age" name="age" required>
                             </div>
                             <div class="form-group">
-                                <label for="flag">flag</label>
-                                <input type="text" class="form-control" id="flag" aria-describedby="flag"
-                                    placeholder="flag" name="flag" required>
+                                <label for="flag">Country:</label>
+                                <select name="flag" id="flag" class="form-control">
+
+                                    <%- include('flags.ejs') %>
+                                </select>
                             </div>
+
                             <div class="form-group">
                                 <label for="checkout">checkout</label>
                                 <input type="date" class="form-control" id="checkout" aria-describedby="checkout"
                                     placeholder="checkout" name="checkout" required>
-                                    
+
                             </div>
                             <div class="form-group">
                                 <label for="isactive">Daily Tournament</label>
                                 <select name="daily" id="daily" class="form-control">
-                                    
+
                                     <option value="true">true</option>
                                     <option value="false">false</option>
                                 </select>
