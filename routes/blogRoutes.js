@@ -8,7 +8,7 @@ router.get('/blogs/create', (req, res) => {
   });
   
   // all blogs home page
-  router.get('/blogs', (req, res) => {
+  router.get('/games', (req, res) => {
     Blog.find().sort({ createdAt: -1 })
       .then(result => {
         res.render('blogs/index', { blogs: result, title: 'All blogs' });
@@ -23,7 +23,7 @@ router.get('/blogs/create', (req, res) => {
       const blog = new Blog(req.body);
       blog.save()
       .then((result) => {
-          res.redirect('/blogs');
+          res.redirect('/games');
       })
       .catch((err) => {
           console.log(err);
@@ -40,7 +40,6 @@ router.get('/blogs/create', (req, res) => {
           console.log(err);
       });
   
-     console.log(id);
   })
   
   //delete a single blog on create page
@@ -49,7 +48,7 @@ router.get('/blogs/create', (req, res) => {
     
     Blog.findByIdAndDelete(id)
       .then(result => {
-        res.json({ redirect: '/blogs' });
+        res.json({ redirect: '/games' });
       })
       .catch(err => {
         console.log(err);
