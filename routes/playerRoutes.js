@@ -76,7 +76,7 @@ const router = express.Router();
    
   //create a new player with the form and redirect it to players
   router.post('/players', (req, res) => {
-       console.log(req.body);
+       
        const player = new Player(req.body);
        //add a embeded value!!!!!!!!!!!!!!!!!!!!!!!!!!!
       /*  player.sub.test = req.body.test; */
@@ -123,7 +123,7 @@ const router = express.Router();
 
   const id = req.params.id; 
   const oldPlayer = req.params.body;
-  console.log( "this is sent" + req.body)
+ 
  
 
   Player.findByIdAndUpdate(id, {"name": req.body.name, "gamertag":req.body.gamertag, "age":req.body.age,"flag":req.body.flag,"checkout":req.body.checkout, "isactive":req.body.isactive,"fifascore": req.body.fifascore,"ctrscore": req.body.ctrscore, "daily": req.body.daily,  "tournaments.fortnite.place": req.body.place, "tournaments.fortnite.kills": req.body.kills,"tournaments.fortnite.forscore": req.body.forscore }, {new: true}, function(err, result){
@@ -132,7 +132,7 @@ const router = express.Router();
         console.log(err);
         res.redirect("/404");
     } else {
-        console.log(result);
+       
         res.redirect('/players/active')
     }
   });
@@ -147,7 +147,7 @@ const router = express.Router();
         console.log(err);
         res.redirect("/404");
     } else {
-        console.log(result);
+       
         res.redirect('/players/active')
     }
   });

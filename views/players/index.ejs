@@ -5,17 +5,13 @@
     <%- include("../partials/nav.ejs") %>
 
       <div class="players content container">
-        <h2>All Players
-
-          <!-- Button trigger modal -->
-
-        </h2>
+        <br>
         <div class="players-home-form">
           <form class="form-inline" action="/players" method="GET">
             <input class="form-control" name="search" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success " type="submit">Search</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Add a New Gamer
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+              <i class="fa fa-user-plus" aria-hidden="true"></i>
             </button>
           </form>
         </div>
@@ -51,8 +47,8 @@
                       <a href="/updateplayer/<%= player._id %>"><button class="btn btn-success"><i
                             class="fa fa-cloud-upload" aria-hidden="true"></i></button></a>
                     </div>
-                    <form action="/updateplayer/daily/<%= player._id%>?_method=POST " method="POST">
-                      <span class="small">DAILY:</span>
+                    <form action="/updateplayer/daily/<%= player._id%>?_method=POST " method="POST" class="card-udpdate-form">
+                      <span class="small"><i class="fa fa-play" aria-hidden="true"></i></span>
                       <select name="daily" class="daily">
                         <option value="<%=player.daily%>">
                             <%=player.daily%>
@@ -60,7 +56,15 @@
                         <option value="true">yes</option>
                         <option value="false">no</option>
                     </select>
-                    <button type="submit" class="btn btn-secondary"><i class="fa fa-download" aria-hidden="true"></i></button>
+                    <span class="small"><i class="fa fa-qq" aria-hidden="true"></i></span>
+                    <select name="isactive" id="isactive" class="daily">
+                      <option value="<%=player.isactive%>">
+                          <%=player.isactive%>
+                      </option>
+                      <option value="true">yes</option>
+                      <option value="false">no</option>
+                  </select> 
+                    <button type="submit" class="btn btn-outline-success"><i class="fa fa-download" aria-hidden="true"></i></button>
                     </form>
                   </div>
                 </div>

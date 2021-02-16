@@ -61,16 +61,16 @@ const router = express.Router();
         router.post('/fortniteupdateplayer/:id' , (req,res) => {
           res.locals.moment = moment;
           const id = req.params.id;
-          console.log(req.body);  
+        
 
-          console.log(req.body)           
+                  
           Player.findByIdAndUpdate(id, { "tournaments.fortnite.place": req.body.place, "tournaments.fortnite.kills": req.body.kills,"tournaments.fortnite.forscore": req.body.forscore, "daily": req.body.daily}, {new: true}, function(err, result){
             
             if(err) {
                 console.log(err);
                 res.redirect("/404");
             } else {
-                console.log(result);
+                
                 res.redirect('/fortnite');
             }
           });
@@ -91,7 +91,7 @@ const router = express.Router();
           console.log(err);
           res.redirect("/404");
       } else {
-          console.log(result);
+        
           res.redirect('/fortnite');
       }
     });

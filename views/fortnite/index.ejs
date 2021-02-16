@@ -19,9 +19,9 @@
             <input class="form-control" name="search" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success " type="submit">Search</button>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-              <i
-              class="fa fa-plus"></i>
+              <i class="fa fa-user-plus" aria-hidden="true"></i>
             </button>
+           
             <span class="timetr"> <%= moment().format( 'DD-MMM-YYYY' )%>  </span>
           </form>
       
@@ -33,6 +33,9 @@
         <div class="row">
           <div class="col-sm-6 ul-wrapper">
             <ul class="list-group">
+
+              
+
               <% if (players.length> 0) { %>
                 <% players.forEach(player=> { %>            
                     <li class="list-group-item2">
@@ -68,8 +71,18 @@
                   
                   
                       <% if (players.length> 0) { %>
-                        <% players.forEach(player=> { %>            
-                          <p class="text-left "><span class="extraname"><%= player.gamertag %></span> <span class="extrascore"><%= player.tournaments.fortnite.forscore %></span> </p>
+                        <% players.forEach(player=> { %>  
+                          
+                       <!--    logic for order nubmer -->
+                          <% 
+                            var index = players.indexOf(player);
+                            var numb = Number(index + 1)
+                  
+                          %>
+
+                          <p class="text-left ">
+                         <span class="h3"> <%= numb  %>.  </span>
+                            <span class="extraname"><%= player.gamertag %></span> <span class="extrascore"><%= player.tournaments.fortnite.forscore %></span> </p>
                         
                           
                       <% }) %>
