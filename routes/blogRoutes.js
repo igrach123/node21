@@ -9,7 +9,9 @@ router.get('/blogs/create', (req, res) => {
   
   // all blogs home page
   router.get('/games', (req, res) => {
-    Blog.find().sort({ createdAt: -1 })
+
+
+    Blog.find().sort({ "console": 1 })
       .then(result => {
         res.render('blogs/index', { blogs: result, title: 'All blogs' });
       })
