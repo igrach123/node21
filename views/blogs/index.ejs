@@ -63,9 +63,14 @@
           console.log(item.innerHTML);
 
           if (item.innerHTML === " Play Station 5") {
-            item.classList.add("bg-info");
+            item.parentElement.classList.add("bg-info");
           } else if (item.innerHTML === " Play Station 4") {
-            item.classList.add("bg-info");
+            item.parentElement.classList.add("bg-info");
+          }
+           else if (item.innerHTML === " Xbox") {
+            item.parentElement.classList.add("bg-success");
+          }else {
+            item.parentElement.classList.add("bg-danger");
           }
       });
     </script>
