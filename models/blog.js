@@ -12,6 +12,10 @@ const gameSchema = new Schema({
         type: String,
         required:true
     },
+    video: {
+        type: String,
+        required:false
+    },
     img: {
         type: String,
         required: false
@@ -19,6 +23,10 @@ const gameSchema = new Schema({
     multiplayer: {
         type: Boolean,
         required:true
+    },
+    textarea: {
+        type: String,
+        required:false
     },
     console: {
         type: String,

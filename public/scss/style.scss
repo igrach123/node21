@@ -88,10 +88,6 @@ select {
   }
   .card-body {
     padding: 10px;
-    p {
-      padding-bottom: 0;
-      margin-bottom: 0px;
-    }
   }
   form {
     display: inline;
@@ -253,5 +249,44 @@ select {
     margin-left: 30px;
     text-align: right !important;
     background-color: #f2fcfe;
+  }
+}
+.games-home {
+  .game-card-wrapper {
+    width: 12.3%;
+    margin-left: 0.1%;
+    margin-right: 0.1%;
+  }
+  .card-body {
+    padding: 5px;
+  }
+}
+.ps5 {
+  background-color: #003791;
+}
+.xbox {
+  background-color: #0e7a0d;
+}
+.switch {
+  background-color: #e60012;
+}
+.ps5,
+.xbox,
+.switch {
+  color: #f2fcfe;
+  .card-title {
+    font-weight: 700;
+  }
+  .console {
+    margin-bottom: 5px;
+  }
+}
+.game-details {
+  color: #f2fcfe;
+  h1 {
+    text-align: center;
+    font-weight: 900;
+    margin-top: 20px;
+    letter-spacing: 3px;
   }
 }

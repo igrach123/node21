@@ -6,38 +6,56 @@
 
     <%- include('../partials/nav.ejs') %>
 
-      <div class="create-blog content">
+      <div class="create-blog content row">
+        <div class="col-sm-6 offset-sm-3" >
         <form action="/blogs" method="POST">
-          <label for="title">Game title:</label>
-          <input type="text" id="title" required name="title">
+          <div class="form-group">
+            <label for="title">Game title:</label>
+            <input type="text" id="title" required name="title"class="form-control">
 
-          <label for="snippet">Game Descritipion:</label>
-          <input type="text" id="snippet" required name="snippet">
+        </div>
+        <div class="form-group">
 
-          <label for="multiplayer">Multiplayer</label>
-          <select name="multiplayer" id="multiplayer" required>
+            <label  for="snippet">Game Short Descritipion:</label>
+            <input class="form-control" type="text" id="snippet" required name="snippet">
+        </div>
+        <div class="form-group">
+            <label for="textarea">Game Information :</label>
+            <textarea name="textarea" id="textarea" cols="70" rows="10" id="snippet" class="form-control"></textarea>
+
+        </div>
+
+        <div class="form-group">   
+        <label  for="multiplayer">Multiplayer</label>
+        <select class="form-control" class="form-control" name="multiplayer" id="multiplayer" required>
+          
             <option value="yes">yes</option>
             <option value="no">no</option>
-          </select>
+        </select>
+        </div>
+        <div class="form-group">
+            
 
+      <label  for="console">Console</label>
+      <select class="form-control" class="form-control" name="console" id="console" required>
 
-          <label for="console">Console</label>
-          <select name="console" id="console" required>
-            <option value="Play Station 5">Play Station 5</option>
-            <option value="Play Station 4">Play Station 4</option>
-            <option value="Nintendo Switch">Nintendo Switch</option>
-            <option value="Xbox">Xbox</option>
-          </select>
+        <option value="Play Station 5">Play Station 5</option>
+        <option value="Play Station 4">Play Station 4</option>
+        <option value="Nintendo Switch">Nintendo Switch</option>
+        <option value="Xbox">Xbox</option>
+      </select>
 
+        </div>     
+      <label for="img">img:</label>
+      <input class="form-control" type="text" id="img" required name="img">
+      <br>
 
-          <label for="img">img:</label>
-          <input type="text" id="img" required name="img">
-
-          <button>Submit</button>
+      <button class="btn btn-success text-center">Submit</button>
         </form>
-
-        <%- include('../partials/footer.ejs') %>
       </div>
+      </div>
+        <%- include('../partials/footer.ejs') %>
+      
 
   </body>
 

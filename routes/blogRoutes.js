@@ -57,4 +57,41 @@ router.get('/blogs/create', (req, res) => {
       });
   });
 
+  // update game
+  //render the single player update site site
+  router.get('/updateblog/:id' , (req,res) => {
+   
+     const id = req.params.id; 
+     Blog.findById(id)
+      .then((result) => {
+          res.render('blogs/update' , {blog: result, title:'Update Game'})
+          
+      })
+      .catch((err) => {
+          console.log(err);
+      });
+    });
+ 
+    
+   //update player with the update post form and redirect to the players site
+   router.post('/updateblog/:id' , (req,res) => {
+  
+    const id = req.params.id; 
+    const oldPlayer = req.params.body;
+   
+   
+  
+    Blog.findByIdAndUpdate(id, {"title": req.body.title, "snippet": req.body.snippet, "img": req.body.img, "multiplayer": req.body.multiplayer, "textarea": req.body.textarea, "console": req.body.console, "video": req.body.video  }, {new: true}, function(err, result){
+      
+      if(err) {
+          console.log(err);
+          res.redirect("/404");
+      } else {
+         
+          res.redirect('/games')
+      }
+    });
+  });
+  
+
   module.exports = router;
