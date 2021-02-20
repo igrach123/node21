@@ -4,9 +4,15 @@
   <body>
     <%- include("../partials/nav.ejs") %>
 
-      <div class="container-fluid games-home">
+      <div class="container-fluid games-home" id="myDIV">
+        <br>
+        <div class="text-center">
+          <input class=" col-sm-2" id="searchbox-input" type="text" placeholder="Search.." >
+        </div>
+      
+        
       <br>
-        <div class="row">
+        <div class="row" id="myDIV">
         <% if (blogs.length> 0) { %>
           <% blogs.forEach(blog=> { %>
             <div class=" d-flex align-items-stretch text-center game-card-wrapper">
@@ -71,6 +77,18 @@
           }else {
             item.parentElement.classList.add("switch");
           }
+      });
+    </script>
+  <!-- 
+  filter items script -->
+    <script>
+            $(document).ready(function(){
+        $('#searchbox-input').on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $(".card").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
       });
     </script>
   </body>
