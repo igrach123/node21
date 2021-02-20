@@ -1,22 +1,37 @@
 <html lang="en">
 <%- include("../partials/head.ejs") %>
 
+
     <body>
         <%- include("../partials/nav.ejs") %>
 
-            <div class="container">
-
-                <h1 class="text-white">
+            <div class="container game-details">
+            
+                <h1 >
                     <%= blog.title %>
                 </h1>
-                <img src="<%= blog.img %>" class="game-img" alt="<%= blog.img %> ">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <img src="<%= blog.img %>" class="game-img" alt="<%= blog.img %> ">
+                    </div>
+                    <div class="col-sm-9 yt-video">
+                        <iframe width="720" height="350" src="https://www.youtube.com/embed/<%=blog.video%>" frameborder="0" allowfullscreen></iframe>
+                        
+                    </div>
+                </div>
+                <% console.log(blog.video) %> 
+                
+                <br>
                 <div class="content">
-                    <p>
-                        <%= blog.body %>
+                    <br>
+                    <p class="textarea">
+                        <%= blog.textarea %>
                     </p>
-                    <p class="text-white"><%= blog.snippet %></p>
+                    <p class="game-snippet"><%= blog.snippet %></p>
                 </div>
                 <a class="delete btn btn-danger" data-doc="<%= blog._id %>"><i class="fa fa-trash"></i></a>
+                <a href="/updateblog/<%= blog._id %>"><button class="btn btn-success"><i
+                    class="fa fa-cloud-upload" aria-hidden="true"></i></button></a>
             </div>
 
             <%- include("../partials/footer.ejs") %>
@@ -33,7 +48,10 @@
                         .catch(err => console.log(err));
                 });
             
+                var loc = redirect_location;      
+                window.parent.location.replace(loc);
             </script>
+            
     </body>
 
 </html>
