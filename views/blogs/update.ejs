@@ -11,7 +11,7 @@
                     <div class="col-sm-6 offset-sm-3 ">
                         <h2 class="text-center">Update Game</h2>
                         <br>
-                        <div class="create-blog content  " >
+                        <div class="create-game content  " >
                             <form action="/updateblog/<%= blog._id%>?_method=POST " method="POST">
                                 <div class="form-group">
                                     <label for="title">Game title:</label>
@@ -65,7 +65,7 @@
                               <input class="form-control" type="text" id="img" required name="img" value="<%= blog.img%>">
                               <br>
                     
-                              <button class="btn btn-success text-center">Submit</button>
+                              <button class="btn btn-success text-center">Save</button> <a class="btn btn-info" href="/games"> Back <i class="fa fa-hand-o-left" aria-hidden="true"></i></a>
                             </form>
 
 
