@@ -24,6 +24,21 @@
            
             <span class="timetr"> <%= moment().format( 'DD-MMM-YYYY' )%>  </span>
           </form>
+
+          <!-- sting this shit -->
+          <form action="/fortniteupdateplayerall?_method=POST" method="POST">
+            <div class="form-group">
+              <label for="isactive">Daily Tournament</label>
+              <select name="daily" >
+                  <option value="true">true</option>
+                  <option value="false">false</option>
+              </select>
+          </div>
+            <button type="button" class="btn btn-warning" >
+              <i class="fa fa-arrow" aria-hidden="true"></i>
+            </button>       
+                       
+          </form>
       
         </div>
           <!-- Modal -->
@@ -58,6 +73,7 @@
                           <option value="false">NE</i></option>
                         </select>  
                       </form>
+                    
                     </li>
                         
                     <% }) %>
