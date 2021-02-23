@@ -21,24 +21,16 @@
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
               <i class="fa fa-user-plus" aria-hidden="true"></i>
             </button>
-           
+              <!-- sting this shit -->
+         
+              <a class="refresh btn btn-warning"  data-doc="delete">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </a> 
             <span class="timetr"> <%= moment().format( 'DD-MMM-YYYY' )%>  </span>
           </form>
 
-          <!-- sting this shit -->
-          <form action="/fortniteupdateplayerall?_method=POST" method="POST">
-            <div class="form-group">
-              <label for="isactive">Daily Tournament</label>
-              <select name="daily" >
-                  <option value="true">true</option>
-                  <option value="false">false</option>
-              </select>
-          </div>
-            <button type="button" class="btn btn-warning" >
-              <i class="fa fa-arrow" aria-hidden="true"></i>
-            </button>       
-                       
-          </form>
+             
+         
       
         </div>
           <!-- Modal -->
@@ -117,6 +109,21 @@
         <%- include("../partials/footer.ejs") %>
         <!-- fortnite js logic -->
         <%- include("../partials/fortnitelogic.ejs") %>
+
+        <script>
+          const refresh = document.querySelector('.refresh');
+          refresh.addEventListener('click' , (e) => {
+            const endpoint = `/fortniteupdatemany`;
+
+            fetch(endpoint , {
+              method: 'PUT' 
+            })
+            .then((response) => response.json())
+            .then((data) => window.location.href = data.redirect)
+            .catch(err => console.log(err));
+          })
+         
+        </script>
 
      
      
