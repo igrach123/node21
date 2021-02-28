@@ -1,0 +1,41 @@
+<html lang="en">
+	<%- include("../partials/head.ejs") %>
+
+	<body>
+		<%- include("../partials/nav.ejs") %>
+
+		<div class="players content container">
+			<br />
+
+
+			<!-- add player modaal -->
+
+			<!-- Modal -->
+			<%- include("../partials/newplayermodal.ejs") %>
+
+			<div class="card-wrapper row text-center">
+				<% if (users.length> 0) { %> <% users.forEach(user=> { %>
+				<div
+					class="col-sm-auto col-md-2 d-flex align-items-stretch text-center"
+				>
+					<div class="card card-1">
+						<div class="card-body">
+							<h5 class="card-title"><%= user.name%></h5>
+							<p><%= user.email%></p>
+
+							
+						</form>
+					</div>
+				</div>
+				<% }) %> <% } else { %>
+				<p>There are no players to display...</p>
+				<% } %>
+			</div>
+		</div>
+
+		<%- include("../partials/footer.ejs") %>
+
+		<!--  delte player logic -->
+		<%- include("../partials/deleteplayer.ejs") %>
+	</body>
+</html>

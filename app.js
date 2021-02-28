@@ -10,6 +10,7 @@ const mongoose = require("mongoose");
 const blogRoutes = require("./routes/blogRoutes");
 const playerRoutes = require("./routes/playerRoutes");
 const fortniteRoutes = require("./routes/fortniteRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 //fire the express app
 const app = express();
@@ -48,6 +49,7 @@ app.get("/", (req, res) => {
 app.use(blogRoutes);
 app.use(playerRoutes);
 app.use(fortniteRoutes);
+app.use(userRoutes);
 
 // 404 page
 app.use((req, res) => {
