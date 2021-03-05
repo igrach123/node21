@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 // player Schema
 
-const playerSchema = new Schema(
+const userSchema = new Schema(
 	{
 		name: {
 			type: String,
@@ -15,6 +15,7 @@ const playerSchema = new Schema(
 			type: String,
 			required: true,
 			trim: true,
+			unique: true,
 			lowercase: true,
 			validate(value) {
 				if (!validator.isEmail(value)) {
@@ -26,7 +27,7 @@ const playerSchema = new Schema(
 			type: String,
 			required: true,
 			trim: true,
-			minLength: 6,
+			minLength: 5,
 			validate(value) {
 				if (value.toLowerCase().includes("password")) {
 					throw new Error("Password canonot contain password");
@@ -37,6 +38,6 @@ const playerSchema = new Schema(
 	{ timestamps: true }
 );
 
-const User = mongoose.model("User", playerSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;
