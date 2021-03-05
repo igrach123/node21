@@ -1,5 +1,6 @@
 const express = require("express");
 const moment = require("moment");
+const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const router = express.Router();
 
@@ -11,34 +12,21 @@ const router = express.Router();
 router.get("/users/create", (req, res) => {
 	res.render("users/create", { title: "Create a new User" });
 });
-
-//create a new player with the form and redirect it to players
-router.post("/users", (req, res) => {
-	const user = new User(req.body);
-	console.log(user);
-	//add a embeded value!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	/*  player.sub.test = req.body.test; */
-	user
-		.save()
-		.then((result) => {
-			res.redirect("/users");
-		})
-		.catch((err) => {
-			console.log(err);
-		});
+router.get("/users/login", (req, res) => {
+	res.render("users/login", { title: "Login" });
 });
 
-//show single player details
-router.get("/users/:id", (req, res) => {
-	//send moment js to details ejs
-	res.locals.moment = moment;
-	const id = req.params.id;
-	Player.findById(id)
+//create a new player with the form and redirect it to players
+router.post("/users", async (req, res) => {
+	const user = new User(req.body);
+	const salt = await bcrypt.genSalt(10);
+	user.password = await bcrypt.hash(user.password, salt);
+	console.log(user.password);
+
+	await user
+		.save()
 		.then((result) => {
-			res.render("users/details", {
-				player: result,
-				title: "User Details",
-			});
+			res.redirect("/");
 		})
 		.catch((err) => {
 			console.log(err);

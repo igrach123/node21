@@ -11,6 +11,7 @@ const blogRoutes = require("./routes/blogRoutes");
 const playerRoutes = require("./routes/playerRoutes");
 const fortniteRoutes = require("./routes/fortniteRoutes");
 const userRoutes = require("./routes/userRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 //fire the express app
 const app = express();
@@ -23,6 +24,9 @@ mongoose
 	.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then((result) => app.listen(3000))
 	.catch((err) => console.log(err));
+
+//deprecation warining solution
+mongoose.set("useCreateIndex", true);
 
 // register view engine
 app.set("view engine", "ejs");
@@ -49,6 +53,8 @@ app.get("/", (req, res) => {
 app.use(blogRoutes);
 app.use(playerRoutes);
 app.use(fortniteRoutes);
+//error
+app.use(authRoutes);
 app.use(userRoutes);
 
 // 404 page
