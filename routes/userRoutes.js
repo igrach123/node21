@@ -1,18 +1,21 @@
+/* const jwt = require("jsonwebtoken"); */
 const express = require("express");
-const moment = require("moment");
-const bcrypt = require("bcrypt");
-const User = require("../models/user");
+const session = require("express-session");
+const passport = require("passport");
+const auth0Strategy = require("passport-auth0");
+const app = express();
+/* const bcrypt = require("bcrypt");
+const User = require("../models/user"); */
 const router = express.Router();
-
-// user routes////////////////////////
 
 // all users render
 
 // render create a new player
-router.get("/users/create", (req, res) => {
+router.get("/users/create", (req, res, next) => {
 	res.render("users/create", { title: "Create a new User" });
 });
-router.get("/users/login", (req, res) => {
+
+/* router.get("/users/login", (req, res) => {
 	res.render("users/login", { title: "Login" });
 });
 
@@ -31,7 +34,11 @@ router.post("/users", async (req, res) => {
 		.catch((err) => {
 			console.log(err);
 		});
-});
+
+	const token = jwt.sign({ _id: user._id }, config.get("jwtPrivatekey"));
+	res.header("x-auth-token", token).send(user._id, user.name, user.email);
+	res.send(user._id, user.name, user.email);
+}); */
 
 //update player with the update post form and redirect to the players site
 
