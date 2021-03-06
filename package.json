@@ -11,10 +11,15 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "bootstrap": "^4.6.0",
+    "config": "^3.3.4",
+    "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "express-openid-connect": "^2.2.1",
+    "express-session": "^1.17.1",
     "joi": "^17.4.0",
     "jquery": "^3.5.1",
+    "jsonwebtoken": "^8.5.1",
     "locus": "^2.0.4",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
@@ -22,6 +27,8 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "nodemon": "^2.0.7",
+    "passport": "^0.4.1",
+    "passport-auth0": "^1.4.0",
     "serve-favicon": "^2.5.0",
     "validator": "^13.5.2"
   }
