@@ -18,7 +18,7 @@
 			<br />
 			<div class="row" id="myDIV">
 				<% if (blogs.length> 0) { %> <% blogs.forEach(blog=> { %>
-				<div class="d-flex align-items-stretch text-center game-card-wrapper">
+				<div class="text-center d-flex" id="game-card-wrapper">
 					<div class="card card-1">
 						<a href="/blogs/<%= blog._id %> ">
 							<img

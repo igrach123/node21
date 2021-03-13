@@ -44,6 +44,39 @@ router.get("/fortnite", function (req, res) {
 		}
 	});
 });
+//top 50
+router.get("/top50", function (req, res) {
+	res.locals.moment = moment;
+	var player = {}; //Create Empty player Object
+	var blogs = {}; //Create Empty games&blogs Object
+	var vendors = {}; //Create Empty vendor Objext
+
+	const hasFortniteScore = {};
+
+	Player.find(hasFortniteScore)
+		.sort({ "tournaments.fortnite.forscore": -1 })
+		.limit(25)
+		.then((result) => {
+			players = result;
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+
+	Game.find({}, function (err, allVendors) {
+		if (err) {
+			console.log(err);
+		} else {
+			blogs = allVendors;
+			//find order collection and passing it to ejs templates
+			res.render("fortnite/top50", {
+				players: players,
+				blogs: blogs,
+				title: "Fortnite Tournament",
+			});
+		}
+	});
+});
 
 //render the single player update site site
 router.get("/fortnitefullupdateplayer/:id", (req, res) => {

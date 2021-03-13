@@ -1,0 +1,62 @@
+<html lang="en">
+	<%- include("../partials/head.ejs") %>
+
+	<body>
+		<%- include("../partials/nav.ejs") %>
+		<!--  create a new player -->
+		<div class="container-fluid fn-header">
+			<h1 class="text-center">TOP 25 FORTNITE PLAYERS OF ALL TIME</h1>
+		</div>
+		<div class="container-fluid" id="fortnite-home">
+			<div class="container text-center">
+				<!-- end  create a new player -->
+
+				<div class="row text-center">
+					<div class="offset-sm-2 col-sm-8 top50">
+						<% if (players.length> 0) { %> <% players.forEach(player=> { %>
+
+						<!--    logic for order nubmer -->
+						<% var index = players.indexOf(player); var numb = Number(index + 1)
+						%>
+
+						<p class="text-left">
+							<span class="h3"> <%= numb %>. </span>
+							<span class="extraname"><%= player.gamertag %></span>
+							<span class="extrascore"
+								><%= player.tournaments.fortnite.forscore %></span
+							>
+							<span>Place: <%= player.tournaments.fortnite.place %> </span>
+							<span>Kills: <%= player.tournaments.fortnite.kills %> </span>
+							<span class="playedat">
+								Played AT: <%= moment(player.updatedAt).format( 'DD-MMM-YYYY' )
+								%>
+							</span>
+						</p>
+
+						<% }) %> <% } else { %>
+						<p>There are no players to display...</p>
+						<% } %>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<%- include("../partials/footer.ejs") %>
+		<!-- fortnite js logic -->
+		<%- include("../partials/fortnitelogic.ejs") %>
+
+		<script>
+			const refresh = document.querySelector(".refresh");
+			refresh.addEventListener("click", (e) => {
+				const endpoint = `/fortniteupdatemany`;
+
+				fetch(endpoint, {
+					method: "PUT",
+				})
+					.then((response) => response.json())
+					.then((data) => (window.location.href = data.redirect))
+					.catch((err) => console.log(err));
+			});
+		</script>
+	</body>
+</html>
