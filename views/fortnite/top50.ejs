@@ -7,12 +7,12 @@
 		<div class="container-fluid fn-header">
 			<h1 class="text-center">TOP 25 FORTNITE PLAYERS OF ALL TIME</h1>
 		</div>
-		<div class="container-fluid" id="fortnite-home">
+		<div class="container-fluid" id="top25-home">
 			<div class="container text-center">
 				<!-- end  create a new player -->
 
 				<div class="row text-center">
-					<div class="offset-sm-2 col-sm-8 top50">
+					<div class="offset-sm-3 col-sm-7 top50">
 						<% if (players.length> 0) { %> <% players.forEach(player=> { %>
 
 						<!--    logic for order nubmer -->
@@ -25,11 +25,14 @@
 							<span class="extrascore"
 								><%= player.tournaments.fortnite.forscore %></span
 							>
-							<span>Place: <%= player.tournaments.fortnite.place %> </span>
-							<span>Kills: <%= player.tournaments.fortnite.kills %> </span>
+
 							<span class="playedat">
-								Played AT: <%= moment(player.updatedAt).format( 'DD-MMM-YYYY' )
-								%>
+								<span>Place: <%= player.tournaments.fortnite.place %> </span>
+								<span>Kills: <%= player.tournaments.fortnite.kills %> </span>
+								<span
+									>Played AT: <%= moment(player.updatedAt).format( 'DD-MMM-YYYY'
+									) %></span
+								>
 							</span>
 						</p>
 
