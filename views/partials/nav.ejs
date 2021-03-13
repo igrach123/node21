@@ -38,20 +38,28 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/blogs/create"> New Game</a>
 				</li>
-				<!-- logged in logic -->
-				<% if(loggedIn === true){ %>
+
 				<li class="nav-item newuser">
-					<a class="nav-link" href="/user"> Profile</a>
+					<a class="nav-link" href="/logout">Logout</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/logout">Log Out</a>
-				</li>
-				<% } else{ %>
-				<li class="nav-item">
-					<a class="nav-link" href="/login">Login</a>
-				</li>
-				<% } %>
+				<li class="nav-item newuser">
+					<a class="logout nav-link" href="#">Logout2</a>
+				</li> 
+				<!-- <li class="nav-item newuser">
+					<a class="nav-link" href="http://username:password@localhost:3000">Logout2</a>
+				</li> -->
 			</ul>
+		
+			<script>
+				
+			const logoutBtn = document.querySelector('.logout');
+			logoutBtn.addEventListener("click", function(){ 
+				console.log("cliking butn")
+				window.execCommand('ClearAuthenticationCache');
+			 });
+			</script>
 		</div>
 	</div>
-</nav>
+</nav
+
+

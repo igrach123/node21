@@ -1,6 +1,18 @@
 const express = require("express");
 const Blog = require("../models/blog");
 const router = express.Router();
+const auth = require("http-auth");
+const basic = auth.basic(
+	{
+		realm: "Protected Area",
+	},
+	function (username, password, callback) {
+		// Custom authentication method.
+		callback(username === "gameroom" && password === "1411");
+	}
+);
+
+const app = express();
 
 //npm multer for file uploads
 const multer = require("multer");
@@ -28,9 +40,12 @@ const uploads = multer({
 });
 
 // blog routes
-router.get("/blogs/create", (req, res) => {
-	res.render("blogs/create", { title: "Create a new blog" });
-});
+router.get(
+	"/blogs/create",
+	basic.check((req, res) => {
+		res.render("blogs/create", { title: "Create a new blog" });
+	})
+);
 
 // all blogs home page
 router.get("/games", (req, res) => {
@@ -92,7 +107,6 @@ router.delete("/blogs/:id", (req, res) => {
 		});
 });
 
-// update game
 //render the single player update site site
 router.get("/updateblog/:id", (req, res) => {
 	const id = req.params.id;
@@ -103,6 +117,12 @@ router.get("/updateblog/:id", (req, res) => {
 		.catch((err) => {
 			console.log(err);
 		});
+});
+
+router.get("/logout", function (req, res) {
+	req.logout();
+	res.cookie();
+	res.redirect("/");
 });
 
 //update player with the update post form and redirect to the players site

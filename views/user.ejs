@@ -4,8 +4,12 @@
 	<body>
 		<%- include("./partials/nav.ejs") %>
 
-		<h1 class="text-center">Profile</h1>
-		<div class="container"></div>
-		<%- include("./partials/footer.ejs") %>
+		<div class="container text-center bg-success">
+			<h1 class="text-4xl mb-4">Welcome <%= user.name%></h1>
+			<p><%= user.email %></p>
+			<% } %> <%- include("./partials/footer.ejs") %>
+		</div>
 	</body>
 </html>
+
+<!-- {"given_name":"GameroomAmarin","nickname":"gameroom.amarin4","name":"GameroomAmarin","picture":"https://lh3.googleusercontent.com/a-/AOh14GgC8Hmz0yh2sslz3lhq27CjVfL4oAPxx1vZ62X1bQ=s96-c","locale":"en-GB","updated_at":"2021-03-07T08:51:08.369Z","email":"gameroom.amarin4@gmail.com","email_verified":true,"sub":"google-oauth2|102195885898484211682"} -->
