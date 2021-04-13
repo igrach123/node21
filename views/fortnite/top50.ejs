@@ -1,25 +1,25 @@
 <html lang="en">
 	<%- include("../partials/head.ejs") %>
 
-	<body>
+	<body class="top50wrapper">
 		<%- include("../partials/nav.ejs") %>
 		<!--  create a new player -->
-		<div class="container-fluid fn-header">
-			<h1 class="text-center">TOP 25 FORTNITE PLAYERS OF ALL TIME</h1>
+		<div class="">
+			<h1 class="text-center">TOP 50 FORTNITE PLAYERS OF ALL TIME</h1>
 		</div>
 		<div class="container-fluid" id="top25-home">
 			<div class="container text-center">
 				<!-- end  create a new player -->
 
 				<div class="row text-center">
-					<div class="offset-sm-3 col-sm-7 top50">
+					<div class="top50">
 						<% if (players.length> 0) { %> <% players.forEach(player=> { %>
 
 						<!--    logic for order nubmer -->
 						<% var index = players.indexOf(player); var numb = Number(index + 1)
 						%>
 
-						<p class="text-left">
+						<p class="text-left d-flex align-middle">
 							<span class="h3"> <%= numb %>. </span>
 							<span class="extraname"><%= player.gamertag %></span>
 							<span class="extrascore"

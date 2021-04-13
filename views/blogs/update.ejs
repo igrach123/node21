@@ -67,12 +67,31 @@
                     
                               <button class="btn btn-success text-center">Save</button> <a class="btn btn-info" href="/games"> Back <i class="fa fa-hand-o-left" aria-hidden="true"></i></a>
                             </form>
+                            <a class="delete btn btn-danger" data-doc="<%= blog._id %>"
+                                ><i class="fa fa-trash"></i
+                            ></a>
 
 
                 </div>
 
                 <%- include('../partials/footer.ejs') %>
             </div>
+
+            <script>
+                const trashcan = document.querySelector("a.delete");
+                trashcan.addEventListener("click", (e) => {
+                    const endpoint = `/blogs/${trashcan.dataset.doc}`;
+                    fetch(endpoint, {
+                        method: "DELETE",
+                    })
+                        .then((response) => response.json())
+                        .then((data) => (window.location.href = data.redirect))
+                        .catch((err) => console.log(err));
+                });
+    
+                var loc = redirect_location;
+                window.parent.location.replace(loc);
+            </script>
     </body>
 
 </html>

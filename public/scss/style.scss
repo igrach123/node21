@@ -44,7 +44,7 @@ body {
 		#f2fcfe,
 		#1c92d2
 	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	background-image: url("/img/games/gaming-bg5.jpg");
+	background-image: url("/img/games/gaming-bg2.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -255,45 +255,9 @@ select {
 		background-color: #f2fcfe;
 	}
 }
-.top50 {
-	font-family: "Burbank Big Cd Bk";
-	p {
-		color: white;
-		text-transform: uppercase;
-
-		padding: 0;
-		margin: 0;
-		margin-bottom: 0px;
-		line-height: 1;
-	}
-	span {
-		padding: 1px;
-	}
-	span.extraname {
-		font-weight: 900;
-		font-size: 2rem;
-		letter-spacing: 6px;
-		background-color: darkblue;
-		text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-	}
-	.extrascore {
-		font-size: 2.2rem;
-		font-weight: 900;
-		margin-left: 30px;
-		background-color: blueviolet;
-		margin-right: 15px;
-	}
-
-	.playedat {
-		span {
-			margin-left: 10px;
-			margin-right: 5px;
-			background-color: blueviolet;
-		}
-	}
-}
 
 #game-card-wrapper {
+	color: #ffffff;
 	max-width: 12.3%;
 	margin-left: 0.1%;
 	margin-right: 0.1%;
@@ -323,16 +287,80 @@ select {
 	}
 }
 .create-game {
-	label {
-		color: rgb(224, 220, 224);
-		background-color: rgb(9, 113, 150);
+	.form-group {
+		label {
+			color: white;
+		}
 	}
 }
+
 .game-details {
-	color: #f2fcfe;
+	.details-content {
+		margin-left: 15px;
+	}
+	p {
+		color: #f2fcfe;
+	}
+
 	h1 {
 		text-align: center;
 		font-weight: 900;
 		margin-top: 20px;
 	}
+}
+.game-details-h1 {
+	color: #ffffff;
+}
+.top50wrapper {
+	h1 {
+		background-color: #ffd300;
+		font-family: "Burbank Big Cd Bk";
+		font-size: 3rem;
+	}
+	p {
+		display: inline-block;
+		float: left;
+		width: 45%;
+	}
+}
+
+.top50 {
+	font-family: "Burbank Big Cd Bk";
+
+	p {
+		color: white;
+		text-transform: uppercase;
+		padding: 2;
+		margin: 2;
+		border: 1px solid #9d4dbb;
+		border-radius: 5px;
+		background-color: rgba(157, 77, 187, 0.5);
+	}
+	span {
+		padding: 1px;
+	}
+	span.extraname {
+		letter-spacing: 4px;
+		font-weight: 750;
+		font-size: 1.7rem;
+		text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+	}
+	.extrascore {
+		font-size: 1.8rem;
+		font-weight: 900;
+		margin-left: 10px;
+		color: #f3af19;
+		margin-right: 5px;
+	}
+
+	.playedat {
+		font-family: "Roboto-slab";
+		font-size: 0.8rem;
+		span {
+			margin-left: 2px;
+			margin-right: 2px;
+			background-color: rgb(58, 88, 238);
+		}
+	}
+	padding: 0px;
 }

@@ -108,16 +108,19 @@ router.delete("/blogs/:id", (req, res) => {
 });
 
 //render the single player update site site
-router.get("/updateblog/:id", (req, res) => {
-	const id = req.params.id;
-	Blog.findById(id)
-		.then((result) => {
-			res.render("blogs/update", { blog: result, title: "Update Game" });
-		})
-		.catch((err) => {
-			console.log(err);
-		});
-});
+router.get(
+	"/updateblog/:id",
+	basic.check((req, res) => {
+		const id = req.params.id;
+		Blog.findById(id)
+			.then((result) => {
+				res.render("blogs/update", { blog: result, title: "Update Game" });
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	})
+);
 
 router.get("/logout", function (req, res) {
 	req.logout();

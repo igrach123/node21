@@ -55,7 +55,7 @@ router.get("/top50", function (req, res) {
 
 	Player.find(hasFortniteScore)
 		.sort({ "tournaments.fortnite.forscore": -1 })
-		.limit(25)
+		.limit(50)
 		.then((result) => {
 			players = result;
 		})
@@ -72,7 +72,7 @@ router.get("/top50", function (req, res) {
 			res.render("fortnite/top50", {
 				players: players,
 				blogs: blogs,
-				title: "Fortnite Tournament",
+				title: "top 50 Fortnite Players",
 			});
 		}
 	});
