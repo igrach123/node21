@@ -1,0 +1,97 @@
+<html lang="en">
+<%- include('../partials/head.ejs') %>
+
+    <body>
+
+
+        <%- include('../partials/nav.ejs') %>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 ">
+                        <h2 class="text-center">Update Game</h2>
+                        <br>
+                        <div class="create-game content  " >
+                            <form action="/updateblog/<%= blog._id%>?_method=POST " method="POST">
+                                <div class="form-group">
+                                    <label for="title">Game title:</label>
+                                    <input type="text" id="title" required name="title" value="<%= blog.title  %> " class="form-control">
+
+                                </div>
+                                <div class="form-group">
+
+                                    <label  for="snippet">Game Short Descritipion:</label>
+                                    <input class="form-control" type="text" id="snippet" required name="snippet" value="<%= blog.snippet %> ">
+                                </div>
+                                <div class="form-group">
+                                    <label for="textarea">Game Information :</label>
+                                    <textarea name="textarea" id="textarea" cols="70" rows="10" id="snippet" class="form-control" > <%= blog.textarea%></textarea>
+
+                                </div>
+                                <div class="form-group">
+
+                                    <label  for="video">Video:</label>
+                                    <input class="form-control" type="text" id="video" name="video" value="<%=blog.video%>">
+                                </div>
+
+                                <div class="form-group">   
+                                <label  for="multiplayer">Multiplayer</label>
+                                <select class="form-control" class="form-control" name="multiplayer" id="multiplayer" required>
+                                    <option value="<%= blog.multiplayer%>"><%= blog.multiplayer%></option>
+                                    <option value="yes">yes</option>
+                                    <option value="no">no</option>
+                                </select>
+                                </div>
+                                <div class="form-group">
+                                    
+                    
+                              <label  for="console">Console</label>
+                              <select class="form-control" class="form-control" name="console" id="console" required>
+
+                                <option value="<%= blog.console%>"><%= blog.console%></option>
+                                <option value="Play Station 5">Play Station 5</option>
+                                <option value="Play Station 4">Play Station 4</option>
+                                <option value="Nintendo Switch">Nintendo Switch</option>
+                                <option value="Xbox">Xbox</option>
+                              </select>
+                    
+                                </div>
+
+                             
+                              
+                    
+                    
+                              <label for="img">img:</label>
+                              <input class="form-control" type="text" id="img" required name="img" value="<%= blog.img%>">
+                              <br>
+                    
+                              <button class="btn btn-success text-center">Save</button> <a class="btn btn-info" href="/games"> Back <i class="fa fa-hand-o-left" aria-hidden="true"></i></a>
+                            </form>
+                            <a class="delete btn btn-danger" data-doc="<%= blog._id %>"
+                                ><i class="fa fa-trash"></i
+                            ></a>
+
+
+                </div>
+
+                <%- include('../partials/footer.ejs') %>
+            </div>
+
+            <script>
+                const trashcan = document.querySelector("a.delete");
+                trashcan.addEventListener("click", (e) => {
+                    const endpoint = `/blogs/${trashcan.dataset.doc}`;
+                    fetch(endpoint, {
+                        method: "DELETE",
+                    })
+                        .then((response) => response.json())
+                        .then((data) => (window.location.href = data.redirect))
+                        .catch((err) => console.log(err));
+                });
+    
+                var loc = redirect_location;
+                window.parent.location.replace(loc);
+            </script>
+    </body>
+
+</html>

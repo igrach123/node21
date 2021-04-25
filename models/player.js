@@ -8,7 +8,7 @@ const playerSchema = new Schema(
 	{
 		name: {
 			type: String,
-			required: true,
+			required: false,
 		},
 		gamertag: {
 			type: String,
@@ -16,7 +16,7 @@ const playerSchema = new Schema(
 		},
 		age: {
 			type: Number,
-			required: true,
+			required: false,
 		},
 		flag: {
 			type: String,
@@ -30,7 +30,7 @@ const playerSchema = new Schema(
 		daily: {
 			type: Boolean,
 			required: true,
-			default: false,
+			default: true,
 		},
 		checkout: {
 			type: Date,

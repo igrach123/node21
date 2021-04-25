@@ -1,23 +1,30 @@
-import blog from "./blog.js";
-
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const gameSchema = require("./blog");
 
 const reservationSchema = new Schema({
-	conzole: {
-		type: number,
-		required: true,
-	},
-	room: {
-		type: number,
-		require: true,
-	},
-	time: {
+	date: {
 		type: Date,
 		required: true,
+		default: Date.now,
+
+		time: {
+			type: Number,
+			required: true,
+		},
+		console: {
+			type: Number,
+			required: true,
+		},
+		room: {
+			type: Number,
+			require: true,
+		},
+		game: {
+			type: String,
+			required: false,
+		},
 	},
-	game: { type: Schema.Types.ObjectId, ref: "blog" },
 });
 
-export const reservation = userSchema.discriminator("reserveGame", blog);
+const Reservation = mongoose.model("Reservation", reservationSchema);
+module.exports = Reservation;

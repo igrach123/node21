@@ -1,0 +1,119 @@
+<html lang="en">
+	<%- include("../partials/head.ejs") %>
+
+	<body>
+		<%- include("../partials/nav.ejs") %>
+		<!-- Modal -->
+		<%- include("../partials/newreservationmodal.ejs") %>
+
+		<div class="container-fluid games-home" id="myDIV">
+			<h1 class="text-center">reservations</h1>
+			<div class="players-home-form">
+				<form class="form-inline" action="/reservations" method="GET">
+					<input
+						class="form-control"
+						name="search"
+						type="search"
+						placeholder="Search"
+						aria-label="Search"
+					/>
+					<button class="btn btn-outline-success" type="submit">Search</button>
+					<button
+						type="button"
+						class="btn btn-danger"
+						data-toggle="modal"
+						data-target="#reservationModal"
+					>
+						<i class="fa fa-user-plus" aria-hidden="true"></i>
+					</button>
+					<!-- sting this shit -->
+
+					<a class="refresh btn btn-warning" data-doc="delete">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+					</a>
+					<span class="timetr"> <%= moment().format( 'DD-MMM-YYYY' )%> </span>
+				</form>
+			</div>
+			<!-- Modal -->
+			<div class="row" id="myDIV">
+				<% if (blogs.length> 0) { %> <% blogs.forEach(blog=> { %>
+				<div class="text-center d-flex" id="game-card-wrapper">
+					<div class="card card-1">
+						<a href="/blogs/<%= blog._id %> ">
+							<img
+								src="/img/games/thumbs/<%= blog.img %>"
+								class="game-img img-fluid"
+								alt="<%= blog.img %> "
+							/>
+						</a>
+
+						<div class="card-body">
+							<h5 class="card-title"><%= blog.title%></h5>
+							<p><%= blog.snippet %></p>
+							<p><%= blog.multiblog %></p>
+							<p class="console"><%= blog.console %></p>
+
+							<a href="/blogs/<%= blog._id %> " class="btn btn-primary"
+								><i class="fa fa-info" aria-hidden="true"></i
+							></a>
+
+							<a href="/updateblog/<%= blog._id %>"
+								><button class="btn btn-success">
+									<i class="fa fa-cloud-upload" aria-hidden="true"></i></button
+							></a>
+						</div>
+					</div>
+				</div>
+
+				<% }) %> <% } else { %>
+				<p>There are no blogs to display...</p>
+				<% } %>
+			</div>
+		</div>
+
+		<%- include("../partials/footer.ejs") %>
+
+		<script>
+			const trashcan = document.querySelector("a.deleteblog");
+			trashcan.addEventListener("click", (e) => {
+				const endpoint = `/blogs/${trashcan.dataset.doc}`;
+				fetch(endpoint, {
+					method: "DELETE",
+				})
+					.then((response) => response.json())
+					.then((data) => (window.location.href = data.redirect))
+					.catch((err) => console.log(err));
+			});
+		</script>
+
+		<script>
+			const items = document.querySelectorAll(".console");
+			console.log(items);
+
+			items.forEach((item) => {
+				console.log(item.innerHTML);
+
+				if (item.innerHTML === "Play Station 5") {
+					item.parentElement.classList.add("ps5");
+				} else if (item.innerHTML === "Play Station 4") {
+					item.parentElement.classList.add("ps5");
+				} else if (item.innerHTML === "Xbox") {
+					item.parentElement.classList.add("xbox");
+				} else {
+					item.parentElement.classList.add("switch");
+				}
+			});
+		</script>
+
+		<script>
+			$(document).ready(function () {
+				$("#searchbox-input").on("keyup", function () {
+					var value = $(this).val().toLowerCase();
+					$(".card").filter(function () {
+						$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

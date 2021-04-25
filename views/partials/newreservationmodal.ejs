@@ -1,6 +1,6 @@
 <div
 	class="modal fade"
-	id="exampleModal"
+	id="reservationModal"
 	tabindex="-1"
 	role="dialog"
 	aria-labelledby="exampleModalLabel"
@@ -9,7 +9,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Add new Player</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Add new Reservation</h5>
 				<button
 					type="button"
 					class="close"
@@ -23,66 +23,65 @@
 				<div class="row">
 					<div class="col align-self-end"></div>
 					<div class="col align-self-center">
-						<form action="/players" method="POST">
-							<!-- 	<div class="form-group">
-								<label for="name">Player Name</label>
-								<input
-									type="text"
-									class="form-control"
-									id="name"
-									aria-describedby="emailHelp"
-									placeholder="name"
-									name="name"
-								/>
-							</div> -->
+						<form action="/reservations" method="POST">
 							<div class="form-group">
-								<label for="gamertag">#Gamertag</label>
+								<label for="date">Date</label>
 								<input
-									type="text"
+									type="date"
 									class="form-control"
-									id="gamertag"
-									aria-describedby="gamertag"
-									placeholder="gamertag"
-									name="gamertag"
+									id="date"
+									aria-describedby="emailHelp"
+									placeholder="date"
+									name="date"
+								/>
+							</div>
+							<div class="form-group">
+								<label for="time">Time</label>
+								<input
+									type="number"
+									class="form-control"
+									id="time"
+									aria-describedby="time"
+									placeholder="time"
+									name="time"
 									required
 								/>
 							</div>
 							<div class="form-group">
-								<label for="age">Age</label>
+								<label for="room">Room Number</label>
 								<input
 									type="number"
 									class="form-control"
-									id="age"
-									aria-describedby="age"
-									placeholder="age"
-									name="age"
+									id="room"
+									aria-describedby="room"
+									placeholder="room"
+									name="room"
 								/>
-							</div>
-							<div class="form-group">
-								<label for="flag">Country:</label>
-								<select name="flag" id="flag" class="form-control">
-									<%- include('flags.ejs') %>
-								</select>
 							</div>
 
 							<div class="form-group">
-								<label for="checkout">checkout</label>
+								<label for="console">Console Nuber</label>
 								<input
-									type="date"
+									type="number"
 									class="form-control"
-									id="checkout"
-									aria-describedby="checkout"
-									placeholder="checkout"
-									name="checkout"
+									id="console"
+									aria-describedby="console"
+									placeholder="console"
+									name="console"
 								/>
 							</div>
 							<div class="form-group">
-								<label for="isactive">Daily Tournament</label>
-								<select name="daily" id="daily" class="form-control">
-									<option value="true">true</option>
-									<option value="false">false</option>
-								</select>
+								<label for="game">Game</label>
+								<input
+									type="text"
+									class="form-control"
+									id="game"
+									aria-describedby="game"
+									placeholder="game"
+									name="game"
+								/>
 							</div>
+
 							<button type="submit" class="btn btn-primary">Submit</button>
 						</form>
 					</div>

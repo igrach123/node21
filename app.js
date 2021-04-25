@@ -20,6 +20,7 @@ const blogRoutes = require("./routes/blogRoutes");
 const playerRoutes = require("./routes/playerRoutes");
 const fortniteRoutes = require("./routes/fortniteRoutes");
 const userRoutes = require("./routes/userRoutes");
+const reservationRoutes = require("./routes/reservationRoutes");
 const auth = require("./routes/auth");
 
 // connect to mongodb & listen for requests
@@ -61,6 +62,7 @@ app.use(blogRoutes);
 app.use(playerRoutes);
 app.use(fortniteRoutes);
 app.use(userRoutes);
+app.use(reservationRoutes);
 app.use(auth);
 
 // 404 page
