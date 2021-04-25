@@ -94,7 +94,7 @@ router.post("/players", (req, res) => {
 	player
 		.save()
 		.then((result) => {
-			res.redirect("/players/active");
+			res.redirect("/fortnite");
 		})
 		.catch((err) => {
 			console.log(err);
